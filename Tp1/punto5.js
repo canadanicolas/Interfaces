@@ -24,8 +24,8 @@ function drawRect(imageData, r, g, b, a){
       }
 
       else {
-        r = coeficiente * x;
-        g = g - coeficiente;
+        r = 255;
+        g = 255 - (coeficiente * (x - (width/2)));
         b = 0;
       }
       for (let y = 0; y < height; y++) {
