@@ -169,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.putImageData(imageData, 0, 0);
         }
 
+        //Aplica el filtro sepia
         document.querySelector("#buttonSepia").addEventListener("click", getSepia);
         function getSepia() {
                 let index;
