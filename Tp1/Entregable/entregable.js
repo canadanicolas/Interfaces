@@ -173,15 +173,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#buttonSepia").addEventListener("click", applySepiaFilter);
         function applySepiaFilter() {
                 let index;
-                let pixel;
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
                         for (let y = 0; y < imageData.height; y++) {
                                 index = (x + y * imageData.width) * 4;
-                                pixel = 0.3 * getRed(imageData, x, y) + 0.6 * getGreen(imageData, x, y) + 0.1 * getBlue(imageData, x, y);
-                                let r = Math.min(pixel + 35, 255);
-                                let g = Math.min(pixel + 20, 255);
-                                let b = pixel;
+                                let r = Math.min(0.393 * getRed(imageData, x, y) + 0.769 * getGreen(imageData, x, y) + 0.189 * getBlue(imageData, x, y));
+                                let g = Math.min(0.349 * getRed(imageData, x, y) + 0.686 * getGreen(imageData, x, y) + 0.168 * getBlue(imageData, x, y));
+                                let b = Math.min(0.272 * getRed(imageData, x, y) + 0.534 * getGreen(imageData, x, y) + 0.131 * getBlue(imageData, x, y));
                                 imageData.data[index + 0] = r;
                                 imageData.data[index + 1] = g;
                                 imageData.data[index + 2] = b;
