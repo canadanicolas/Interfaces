@@ -5,30 +5,33 @@ var height = c.height;
 var width = c.width;
 var imageData = ctx.createImageData(height, width);
 
-var x = 0;
-var y = 0;
+var r = 0;
+var g = 0;
+var b = 0;
 var a = 255;
+var coeficiente = 255 / (width / 2);
 
-var color = imageData;
-var aux = 255;
-var aux2 = 255;
-const degradeMitad = 0.5;
-
-drawRect(imageData, a);
+drawRect(imageData, r, g, b, a);
 ctx.putImageData(imageData, x, y) *4;
 
-function drawRect(imageData, a){
-    for(let x = 0; x < imageData.width; x++){
-        for(let y = 0; y < imageData.height; y++){
-            color.r = x/imageData.height * aux;
-            color.g = x/imageData.height * aux2;
-            color.b = x/imageData.height * 25;
-          setPixel(imageData, x, y , color.r, color.g, color.b, a);
-        }
-        if(x >= imageData.width/2){
-          aux2 = aux2 - degradeMitad;
-        }
+function drawRect(imageData, r, g, b, a){
+    for(let x = 0; x < width; x++){
+      let t, g, b;
+      if (x  < width / 2) {
+        r = coeficiente * x;
+        g = coeficiente * x;
+        b = 0;
+      }
+
+      else {
+        r = coeficiente * x;
+        g = g - coeficiente;
+        b = 0;
+      }
+      for (let y = 0; y < height; y++) {
+        setPixel(imageData,x,y,r,g,b,a)
     }
+  }
 }
 
 function setPixel(imageData, x, y, r, g, b, a){
