@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
 	<title>Document</title>
 </head>
@@ -14,32 +15,33 @@
 		</div>
 		<div class="containerButtons">
 			<p>Punto 1:</p>
-			<button id="buttonPencil" type="button">Lapiz</button>
-			<button id="buttonEraser" type="button">Goma</button>
-			<input class="colorpicker" id="colorPicker" type="color">
+			<button id="buttonPencil" class="btn btn-secondary" type="button">Lapiz</button>
+			<button id="buttonEraser" class="btn btn-secondary" type="button">Goma</button>
+			<input class="colorpicker" class="btn btn-secondary" id="colorPicker" type="color">
 
 			<p>Punto 2:</p>
-			<input id="inputFile" type="file">
-			<button id="buttonFile" type="button">Aceptar archivo</button>
+			<input id="inputFile" class="btn btn-secondary" type="file">
+			<button id="buttonFile" class="btn btn-secondary" type="button">Aceptar archivo</button>
 			<div>
 				<p>Punto 3:</p>
-				<button id="buttonBinary" type="button">Filtro Binario</button>
-				<button id="buttonSepia" type="button">Filtro Sepia</button>
-				<button id="buttonNegative" type="button">Filtro Negativo</button>
-				<button id="buttonBrightness" type="button">Filtro de Brillo</button>
+				<button id="buttonBinary" class="btn btn-secondary" type="button">Filtro Binario</button>
+				<button id="buttonSepia" class="btn btn-secondary" type="button">Filtro Sepia</button>
+				<button id="buttonNegative" class="btn btn-secondary" type="button">Filtro Negativo</button>
+				<button id="buttonBrightness" class="btn btn-secondary" type="button">Filtro de Brillo</button>
 				<p>Punto 4:</p>
-				<button id="buttonBlur" type="button">Filtro Blur</button>
-				<button id="buttonSaturacion" type="button"> Filtro Saturacion</button>
+				<button id="buttonBlur" class="btn btn-secondary" type="button">Filtro Blur</button>
+				<button id="buttonSaturacion" class="btn btn-secondary" type="button"> Filtro Saturacion</button>
 				<input type="range" min="1" max="5" value="0" step="0.01" class="" id="value">
-				<button id="buttonRemoveFilters" type="button">Quitar filtros</button>
+				<button id="buttonRemoveFilters" class="btn btn-secondary" type="button">Quitar filtros</button>
 			</div>
 			<div>
 				<p>Punto 5:</p>
-				<button id="buttonSave" type="button">Guardar</button>
-				<button id="buttonClear" type="button">Nuevo lienzo</button>
+				<button id="buttonSave" class="btn btn-secondary" type="button">Guardar</button>
+				<button id="buttonClear" class="btn btn-secondary" type="button">Nuevo lienzo</button>
 			</div>
 		</div>
 	</div>
 </body>
 <script src="entregable.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

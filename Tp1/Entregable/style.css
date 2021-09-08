@@ -10,24 +10,10 @@ p{
     font-weight: bold;
 }
 
-button{
+.btn-secondary{
     margin: 2px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 7px;
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: rgb(164, 202, 248);
-}
-
-.colorpicker{
-    margin: 2px;
-    border: 2px solid black;
-    border-radius: 7px;
-    padding: 12px 30px;
-    cursor: pointer;
-    background-color: rgb(164, 202, 248);
 }
 
 .containerTodo{
@@ -40,15 +26,4 @@ button{
 
 .containerButtons{
     padding: 0 20px;
-}
-
-#inputFile{
-    margin: 2px;
-    border: 2px solid black;
-    border-radius: 7px;
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: rgb(164, 202, 248);
 }

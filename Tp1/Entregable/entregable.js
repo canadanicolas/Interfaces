@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
         //Da las coordenadas del puntero para pintar
         function getCoordinates(event) {        
                 return {
-                        x: event.clientX,
-                        y: event.clientY
+                        x: (event.clientX - 15),
+                        y: (event.clientY - 15)
                 };
         }
 
@@ -170,11 +170,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro sepia
-        document.querySelector("#buttonSepia").addEventListener("click", getSepia);
-        function getSepia() {
+        document.querySelector("#buttonSepia").addEventListener("click", applySepiaFilter);
+        function applySepiaFilter() {
                 let index;
                 let pixel;
-                let imageData = ctx.getImageData(0, 0, imageScaledWidth, imageScaledHeight);
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
                         for (let y = 0; y < imageData.height; y++) {
                                 index = (x + y * imageData.width) * 4;
