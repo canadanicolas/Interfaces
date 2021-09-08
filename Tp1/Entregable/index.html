@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="containerTodo">
+		<div>
+			<canvas id="canvas" class="canva" width="800" height="700">
+		</div>
+		<div class="containerButtons">
+			<p>Punto 1:</p>
+			<button id="buttonPencil" type="button">Lapiz</button>
+			<button id="buttonEraser" type="button">Goma</button>
+			<input class="colorpicker" id="colorPicker" type="color">
+
+			<p>Punto 2:</p>
+			<input id="inputFile" type="file">
+			<button id="buttonFile" type="button">Aceptar archivo</button>
+			<div>
+				<p>Punto 3:</p>
+				<button id="buttonBinary" type="button">Filtro Binario</button>
+				<button id="buttonSepia" type="button">Filtro Sepia</button>
+				<button id="buttonNegative" type="button">Filtro Negativo</button>
+				<button id="buttonBrightness" type="button">Filtro de Brillo</button>
+				<p>Punto 4:</p>
+				<button id="buttonBlur" type="button">Filtro Blur</button>
+				<button id="buttonSaturacion" type="button"> Filtro Saturacion</button>
+				<input type="range" min="1" max="5" value="0" step="0.01" class="" id="value">
+				<button id="buttonRemoveFilters" type="button">Quitar filtros</button>
+			</div>
+			<div>
+				<p>Punto 5:</p>
+				<button id="buttonSave" type="button">Guardar</button>
+				<button id="buttonClear" type="button">Nuevo lienzo</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="entregable.js"></script>
+</html>
