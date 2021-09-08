@@ -158,8 +158,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                 let r = getRed(imageData, x, y);
                                 let g = getGreen(imageData, x, y);
                                 let b = getBlue(imageData, x, y);
-                                let grey = (r + g + b) / 3;
-                                setPixel(imageData, x, y, grey, grey, grey, 255);
+                                if (((r + g + b) / 3) <= 255/2){
+                                        r = 0;
+                                        g = 0;
+                                        b = 0;
+                                }else {
+                                        r = 255;
+                                        g = 255;
+                                        b = 255;
+                                }
+                                setPixel(imageData, x, y, r, g, b, 255);
                         }
                 }
                 ctx.putImageData(imageData, 0, 0);
