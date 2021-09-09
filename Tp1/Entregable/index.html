@@ -16,12 +16,12 @@
 		<div class="containerButtons">
 			<p>Punto 1:</p>
 			<button id="buttonPencil" class="btn btn-secondary" type="button">Lapiz</button>
-			<button id="buttonEraser" class="btn btn-secondary" type="button">Goma Borrar</button>
-			<input class="colorpicker" class="btn btn-secondary" id="colorPicker" type="color">
+			<button id="buttonEraser" class="btn btn-secondary" type="button">Goma de Borrar</button>
+			<input class="colorSelector" class="btn btn-secondary" id="colorSelector" type="color">
 			<p></p>
 			<p>Punto 2:</p>
 			<input id="inputFile" class="btn btn-secondary" type="file">
-			<button id="buttonFile" class="btn btn-secondary" type="button">Aceptar archivo</button>
+			<button id="buttonFile" class="btn btn-secondary" type="button">Aceptar Archivo</button>
 			<div>
 				<p></p>
 				<p>Punto 3:</p>
@@ -33,12 +33,15 @@
 				<p>Punto 4:</p>
 				<button id="buttonSaturation" class="btn btn-secondary" type="button">Saturacion</button>
 				<button id="buttonBlur" class="btn btn-secondary" type="button">Blur</button>
+				<button id="buttonBorderDetection" class="btn btn-secondary" type="button">Deteccion de Bordes</button>
 			</div>
 			<div>
 				<p></p>
 				<p>Punto 5:</p>
-				<button id="buttonSave" class="btn btn-secondary" type="button">Descargar</button>
-				<button id="buttonClear" class="btn btn-secondary" type="button">Lienzo vacio</button>
+				<a id="download" download="canvas.png">
+					<button id="buttonDownload" class="btn btn-secondary" type="button">Descargar</button>
+				</a>
+				<button id="buttonNew" class="btn btn-secondary" type="button">Limpiar Canva</button>
 			</div>
 		</div>
 	</div>

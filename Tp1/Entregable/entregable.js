@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (eraser)
                                 ctx.strokeStyle = "#ffffff";
                         else {
-                                color = document.querySelector("#colorPicker").value;
+                                color = document.querySelector("#colorSelector").value;
                                 ctx.strokeStyle = color;
                         }
                         ctx.beginPath();
@@ -121,33 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         /*----------------------------------------------- Punto 3 -----------------------------------------------*/
-
-        //Setea el color rgba del pixel seleccionado
-        function setPixel(imageData, x, y, r, g, b, a){
-                let index = (x + y * imageData.width) * 4;
-                imageData.data[index+0] = r;
-                imageData.data[index+1] = g;
-                imageData.data[index+2] = b;
-                imageData.data[index+3] = a;
-        }
-
-        //Obtiene la cantidad de rojo del pixel
-        function getRed(imageData, x, y) {
-        let index = (x + y * imageData.width) * 4;
-        return imageData.data[index + 0];
-        }
-              
-        //Obtiene la cantidad de verde del pixel
-        function getGreen(imageData, x, y) {
-        let index = (x + y * imageData.width) * 4;
-        return imageData.data[index + 1];
-        }
-        
-        //Obtiene la cantidad de azul del pixel
-        function getBlue(imageData, x, y) {
-        let index = (x + y * imageData.width) * 4;
-        return imageData.data[index + 2];
-        }
 
         //Aplica el filtro binario al canva
         document.querySelector("#buttonBinary").addEventListener("click", applyBinaryFilter);
@@ -218,67 +191,119 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.putImageData(imageData, 0, 0);
         }
 
-        //transforma los valores rgb a hsl
-        function rgbToHsl(imageData, x, y) {
-                let index = (x + y * imageData.width) * 4;
-                let r = imageData.data[index+0];
-                let g = imageData.data[index+1];
-                let b = imageData.data[index+2];
-                r /= 255, g /= 255, b /= 255;
-                var max = Math.max(r, g, b), min = Math.min(r, g, b);
-                var h, s, l = (max + min) / 2;
-                if (max == min) {
-                        h = s = 0; // achromatic
-                } else {
-                        var d = max - min;
-                        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-                        switch (max) {
-                        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                        case g: h = (b - r) / d + 2; break;
-                        case b: h = (r - g) / d + 4; break;
-                        }
-                        h /= 6;
-                }
-                return [ h, s, l ];
-        }
-
-        //transforma los valores hsl a rgb
-        function hslToRgb(h, s, l) {
-                var r, g, b;
-                if (s == 0) {
-                  r = g = b = l; // achromatic
-                } else {
-                  function hue2rgb(p, q, t) {
-                    if (t < 0) t += 1;
-                    if (t > 1) t -= 1;
-                    if (t < 1/6) return p + (q - p) * 6 * t;
-                    if (t < 1/2) return q;
-                    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-                    return p;
-                  }
-                  var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                  var p = 2 * l - q;
-                  r = hue2rgb(p, q, h + 1/3);
-                  g = hue2rgb(p, q, h);
-                  b = hue2rgb(p, q, h - 1/3);
-                }
-                return [ r * 255, g * 255, b * 255 ];
-        }
-
         /*----------------------------------------------- Punto 4 -----------------------------------------------*/
 
-                //Aplica el filtro de saturacion
-                document.querySelector("#buttonSaturation").addEventListener("click", applySaturationFilter);
-                function applySaturationFilter() {
-                        let imageData = ctx.getImageData(0, 0, c.width, c.height);
-                        for (let x = 0; x < imageData.width; x++) {
-                                for (let y = 0; y < imageData.height; y++) {
-                                        let hsl = rgbToHsl(imageData, x, y);
-                                        hsl[1] = hsl[1] + 0.1;
-                                        let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
-                                        setPixel(imageData, x, y, rgb[0], rgb[1], rgb[2], 255);
-                                }
+        //Aplica el filtro de saturacion
+        document.querySelector("#buttonSaturation").addEventListener("click", applySaturationFilter);
+        function applySaturationFilter() {
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let x = 0; x < imageData.width; x++) {
+                        for (let y = 0; y < imageData.height; y++) {
+                                let hsl = rgbToHsl(imageData, x, y);
+                                hsl[1] = hsl[1] + 0.1;
+                                let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                                setPixel(imageData, x, y, rgb[0], rgb[1], rgb[2], 255);
                         }
-                        ctx.putImageData(imageData, 0, 0);
                 }
+                ctx.putImageData(imageData, 0, 0);
+        }
+
+        //FALTA FILTRO BLUR Y/O DETECCION DE BORDES
+
+        /*----------------------------------------------- Punto 5 -----------------------------------------------*/
+
+        //Descarga la canva y no la imagen antigua modificada, checkear
+        document.querySelector("#buttonDownload").addEventListener("click", download);
+        function download() {
+                let download = document.getElementById("download");
+                let image = document.getElementById("canvas").toDataURL("image/png")
+                    .replace("image/png", "image/octet-stream");
+                download.setAttribute("href", image);
+        }
+
+        //Vuelve a pintar la canva de blanco (la limpia)
+        document.querySelector("#buttonNew").addEventListener("click", newCanvas);
+        function newCanvas(){
+                ctx.beginPath();
+                ctx.rect(0, 0, c.width, c.height);
+                ctx.fillStyle = "rgba(255,255,255,1)";
+                ctx.fill();
+        }
 })
+
+        /*------------------------------------------ ------------------ ------------------------------------------*/
+        /*------------------------------------------ Metodos Auxiliares ------------------------------------------*/
+
+//Setea el color rgba del pixel seleccionado
+function setPixel(imageData, x, y, r, g, b, a){
+        let index = (x + y * imageData.width) * 4;
+        imageData.data[index+0] = r;
+        imageData.data[index+1] = g;
+        imageData.data[index+2] = b;
+        imageData.data[index+3] = a;
+}
+
+//Obtiene la cantidad de rojo del pixel
+function getRed(imageData, x, y) {
+let index = (x + y * imageData.width) * 4;
+return imageData.data[index + 0];
+}
+        
+//Obtiene la cantidad de verde del pixel
+function getGreen(imageData, x, y) {
+let index = (x + y * imageData.width) * 4;
+return imageData.data[index + 1];
+}
+
+//Obtiene la cantidad de azul del pixel
+function getBlue(imageData, x, y) {
+let index = (x + y * imageData.width) * 4;
+return imageData.data[index + 2];
+}
+
+//transforma los valores rgb a hsl
+function rgbToHsl(imageData, x, y) {
+        let index = (x + y * imageData.width) * 4;
+        let r = imageData.data[index+0];
+        let g = imageData.data[index+1];
+        let b = imageData.data[index+2];
+        r /= 255, g /= 255, b /= 255;
+        var max = Math.max(r, g, b), min = Math.min(r, g, b);
+        var h, s, l = (max + min) / 2;
+        if (max == min) {
+                h = s = 0; // achromatic
+        } else {
+                var d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+        }
+        return [ h, s, l ];
+}
+
+//transforma los valores hsl a rgb
+function hslToRgb(h, s, l) {
+        var r, g, b;
+        if (s == 0) {
+                r = g = b = l; // achromatic
+        } else {
+                function hue2rgb(p, q, t) {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+                }
+                var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                var p = 2 * l - q;
+                r = hue2rgb(p, q, h + 1/3);
+                g = hue2rgb(p, q, h);
+                b = hue2rgb(p, q, h - 1/3);
+        }
+        return [ r * 255, g * 255, b * 255 ];
+}
