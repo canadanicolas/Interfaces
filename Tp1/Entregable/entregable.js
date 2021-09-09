@@ -267,4 +267,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /*----------------------------------------------- Punto 4 -----------------------------------------------*/
 
+                //Aplica el filtro de saturacion
+                document.querySelector("#buttonSaturation").addEventListener("click", applySaturationFilter);
+                function applySaturationFilter() {
+                        let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                        for (let x = 0; x < imageData.width; x++) {
+                                for (let y = 0; y < imageData.height; y++) {
+                                        let hsl = rgbToHsl(imageData, x, y);
+                                        hsl[1] = hsl[1] + 0.1;
+                                        let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                                        setPixel(imageData, x, y, rgb[0], rgb[1], rgb[2], 255);
+                                }
+                        }
+                        ctx.putImageData(imageData, 0, 0);
+                }
 })
