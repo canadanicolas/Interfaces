@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.fillStyle = "rgba(255,255,255,1)";
         ctx.fill();
 
+        /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 1 -----------------------------------------------*/
 
         //Declaracion de variables para el punto 1
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let color = "#000000";          
                 if ((pencil || eraser) && (active)) {
                         coordinates2 = getCoordinates(event);
-                        ctx.lineWidth = 3;
+                        ctx.lineWidth = document.querySelector("#drawWidth").value;
                         if (eraser)
                                 ctx.strokeStyle = "#ffffff";
                         else {
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
         }
 
+        /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 2 -----------------------------------------------*/
         
         //Declaracion de variables para el punto 2
@@ -116,13 +118,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                 image.onload = function () {
                                         originalImage = image;
                                         if (this.width > this.height) {
-                                                imageAspectRatio = (1.0 * this.height) / this.width;
+                                                imageAspectRatio = this.height / this.width;
                                                 imageScaledWidth = canvas.width;
                                                 imageScaledHeight = canvas.width * imageAspectRatio;
+                                                canvas.height = imageScaledHeight;
                                         } else {
-                                                imageAspectRatio = (1.0 * this.width) / this.height;
+                                                imageAspectRatio = this.width / this.height;
                                                 imageScaledWidth = canvas.height;
                                                 imageScaledHeight = canvas.height * imageAspectRatio;
+                                                canvas.height = imageScaledHeight;
                                         }
                                         ctx.drawImage(this, 0, 0, imageScaledWidth, imageScaledHeight); 
                                 }
@@ -133,8 +137,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#cleanFilters").addEventListener("click", cleanFilters);
         function cleanFilters() {
                 newCanvas();
-                ctx.drawImage(originalImage, 0, 0, imageScaledWidth, imageScaledHeight);
+                if (originalImage != null){
+                        ctx.drawImage(originalImage, 0, 0, imageScaledWidth, imageScaledHeight);
+                }
+                
         }
+
+        /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 3 -----------------------------------------------*/
 
         //Aplica el filtro binario al canva
@@ -220,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.putImageData(imageData, 0, 0);
         }
 
+        /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 4 -----------------------------------------------*/
 
         //Aplica el filtro de saturacion
@@ -267,6 +277,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 setPixel(imageData, x, y, (rAvg/9), (gAvg/9), (bAvg/9), 255);
         }
 
+        //Aplica el filtro de matiz
+        document.querySelector("#matiz").addEventListener("click", applyHueFilter);
+        function applyHueFilter() {
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let x = 0; x < imageData.width; x++) {
+                        for (let y = 0; y < imageData.height; y++) {
+                                let hsl = rgbToHsl(imageData, x, y);
+                                hsl[0] = hsl[0] + 0.1;
+                                let rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
+                                setPixel(imageData, x, y, rgb[0], rgb[1], rgb[2], 255);
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        }
+
+        /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 5 -----------------------------------------------*/
 
         //Descarga la canva y no la imagen antigua modificada, checkear
