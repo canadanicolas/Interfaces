@@ -307,3 +307,13 @@ function hslToRgb(h, s, l) {
         }
         return [ r * 255, g * 255, b * 255 ];
 }
+
+/*
+TO DO LIST
+
+subir imagen
+que cuando descargas la canva se descargue con la resolucion anterior
+blur y/o deteccion de bordes
+
+
+*/ 
