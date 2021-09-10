@@ -129,7 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                 }
 
-
+        //Limpia la canva y carga la imagen original de nuevo
+        document.querySelector("#cleanFilters").addEventListener("click", cleanFilters);
+        function cleanFilters() {
+                newCanvas();
+                ctx.drawImage(originalImage, 0, 0, imageScaledWidth, imageScaledHeight);
+        }
         /*----------------------------------------------- Punto 3 -----------------------------------------------*/
 
         //Aplica el filtro binario al canva
