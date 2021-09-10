@@ -146,6 +146,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.putImageData(imageData, 0, 0);
         }
 
+        //Aplica el filtro de grises al canva
+        document.querySelector("#buttonGrey").addEventListener("click", applyGreyFilter);
+        function applyGreyFilter() {
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                for (let y = 0; y < imageData.height; y++) {
+                        for (let x = 0; x < imageData.width; x++) {
+                                let grey = ((getRed(imageData, x, y) + getGreen(imageData, x, y) 
+                                                + getBlue(imageData, x, y)) / 3);
+                                setPixel(imageData, x, y, grey, grey, grey, 255);
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        }
+
         //Aplica el filtro negativo
         document.querySelector("#buttonNegative").addEventListener("click", applyNegativeFilter);
         function applyNegativeFilter() {
