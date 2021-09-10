@@ -16,7 +16,7 @@ p{
     border-radius: 7px;
 }
 
-.containerTodo{
+.containerAll{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;

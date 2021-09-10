@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let coordinates2;
         
         //Cambia el lapiz
-        document.querySelector("#buttonPencil").addEventListener("click", function () {
+        document.querySelector("#pencil").addEventListener("click", function () {
                 if (pencil) {
                         pencil = false;
                 }
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         //Cambia la goma
-        document.querySelector("#buttonEraser").addEventListener("click", function () { 
+        document.querySelector("#eraser").addEventListener("click", function () { 
                 if (eraser) {
                         eraser = false;
                 }
@@ -99,31 +99,41 @@ document.addEventListener("DOMContentLoaded", function () {
         let imageAspectRatio;
         let imageScaledWidth;
         let imageScaledHeight;
+        let originalImage;
 
         //Carga de archivos para poner el la canva
-        document.querySelector("#buttonFile").addEventListener("click", function () {
-
-                //cambiar a guardar archivos dinamicamente
-                let imagen = new Image();
-                imagen.src = "imagenTest.png";
-                imagen.onload = function () {
-                        if (this.width > this.height) {
-                                imageAspectRatio = (1.0 * this.height) / this.width;
-                                imageScaledWidth = canvas.width;
-                                imageScaledHeight = canvas.width * imageAspectRatio;
-                        } else {
-                                imageAspectRatio = (1.0 * this.width) / this.height;
-                                imageScaledWidth = canvas.height;
-                                imageScaledHeight = canvas.height * imageAspectRatio;
+        
+        let input = document.querySelector('.file');
+                input.onchange = e => {
+                        newCanvas();
+                        let file = e.target.files[0];
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = readerEvent => {
+                                let content = readerEvent.target.result;
+                                let image = new Image();
+                                image.src = content;
+                                image.onload = function () {
+                                        originalImage = image;
+                                        if (this.width > this.height) {
+                                                imageAspectRatio = (1.0 * this.height) / this.width;
+                                                imageScaledWidth = canvas.width;
+                                                imageScaledHeight = canvas.width * imageAspectRatio;
+                                        } else {
+                                                imageAspectRatio = (1.0 * this.width) / this.height;
+                                                imageScaledWidth = canvas.height;
+                                                imageScaledHeight = canvas.height * imageAspectRatio;
+                                        }
+                                        ctx.drawImage(this, 0, 0, imageScaledWidth, imageScaledHeight); 
+                                }
                         }
-                        ctx.drawImage(this, 0, 0, imageScaledWidth, imageScaledHeight); 
                 }
-        })
+
 
         /*----------------------------------------------- Punto 3 -----------------------------------------------*/
 
         //Aplica el filtro binario al canva
-        document.querySelector("#buttonBinary").addEventListener("click", applyBinaryFilter);
+        document.querySelector("#binary").addEventListener("click", applyBinaryFilter);
         function applyBinaryFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
@@ -147,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de grises al canva
-        document.querySelector("#buttonGray").addEventListener("click", applyGrayFilter);
+        document.querySelector("#gray").addEventListener("click", applyGrayFilter);
         function applyGrayFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
@@ -161,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro negativo
-        document.querySelector("#buttonNegative").addEventListener("click", applyNegativeFilter);
+        document.querySelector("#negative").addEventListener("click", applyNegativeFilter);
         function applyNegativeFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
@@ -176,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro sepia
-        document.querySelector("#buttonSepia").addEventListener("click", applySepiaFilter);
+        document.querySelector("#sepia").addEventListener("click", applySepiaFilter);
         function applySepiaFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
@@ -191,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de brillo
-        document.querySelector("#buttonBrightness").addEventListener("click", applyBrightnessFilter);
+        document.querySelector("#brightness").addEventListener("click", applyBrightnessFilter);
         function applyBrightnessFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
@@ -208,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
         /*----------------------------------------------- Punto 4 -----------------------------------------------*/
 
         //Aplica el filtro de saturacion
-        document.querySelector("#buttonSaturation").addEventListener("click", applySaturationFilter);
+        document.querySelector("#saturation").addEventListener("click", applySaturationFilter);
         function applySaturationFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let x = 0; x < imageData.width; x++) {
@@ -223,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro blur
-        document.querySelector("#buttonBlur").addEventListener("click", applyBlurFilter);
+        document.querySelector("#blur").addEventListener("click", applyBlurFilter);
         function applyBlurFilter(){
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 let rAvg = 0;
@@ -258,13 +268,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#buttonDownload").addEventListener("click", download);
         function download() {
                 let download = document.getElementById("download");
-                let image = document.getElementById("canvas").toDataURL("image/png")
-                    .replace("image/png", "image/octet-stream");
-                download.setAttribute("href", image);
+                let newImage = document.getElementById("canvas").toDataURL("newImage/png")
+                    .replace("newImage/png", "newImage/octet-stream");
+                download.setAttribute("href", newImage);
         }
 
         //Vuelve a pintar la canva de blanco (la limpia)
-        document.querySelector("#buttonNew").addEventListener("click", newCanvas);
+        document.querySelector("#new").addEventListener("click", newCanvas);
         function newCanvas(){
                 ctx.beginPath();
                 ctx.rect(0, 0, c.width, c.height);
@@ -353,9 +363,6 @@ function hslToRgb(h, s, l) {
 /*
 TO DO LIST
 
-subir imagen
 que cuando descargas la canva se descargue con la resolucion anterior
-deteccion de bordes (opcional)
-
 
 */ 
