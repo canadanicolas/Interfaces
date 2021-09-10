@@ -147,14 +147,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de grises al canva
-        document.querySelector("#buttonGrey").addEventListener("click", applyGreyFilter);
-        function applyGreyFilter() {
+        document.querySelector("#buttonGray").addEventListener("click", applyGrayFilter);
+        function applyGrayFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
                 for (let y = 0; y < imageData.height; y++) {
                         for (let x = 0; x < imageData.width; x++) {
-                                let grey = ((getRed(imageData, x, y) + getGreen(imageData, x, y) 
+                                let gray = ((getRed(imageData, x, y) + getGreen(imageData, x, y) 
                                                 + getBlue(imageData, x, y)) / 3);
-                                setPixel(imageData, x, y, grey, grey, grey, 255);
+                                setPixel(imageData, x, y, gray, gray, gray, 255);
                         }
                 }
                 ctx.putImageData(imageData, 0, 0);
@@ -222,7 +222,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 ctx.putImageData(imageData, 0, 0);
         }
 
-        //FALTA FILTRO BLUR Y/O DETECCION DE BORDES
+        //Aplica el filtro blur
+        document.querySelector("#buttonBlur").addEventListener("click", applyBlurFilter);
+        function applyBlurFilter(){
+                let imageData = ctx.getImageData(0, 0, c.width, c.height);
+                let rAvg = 0;
+                let gAvg = 0;
+                let bAvg = 0;
+                for (let x = 1; x < imageData.width - 1; x++) {
+                        for (let y = 1; y < imageData.height - 1; y++) {
+                                setAverageRGB(imageData, x, y, rAvg, gAvg, bAvg);
+                                
+                        }
+                }
+                ctx.putImageData(imageData, 0, 0);
+        }
+
+        //Calcula la data promedio de la matriz que rodea al pixel y le setea el rgb segun ese promedio
+        function setAverageRGB(imageData, x, y, rAvg, gAvg, bAvg) {
+                rAvg = getRed(imageData, x - 1, y - 1) + getRed(imageData, x, y - 1) + getRed(imageData, x + 1, y - 1)
+                        + getRed(imageData, x - 1, y) + getRed(imageData, x, y) + getRed(imageData, x + 1, y)
+                        + getRed(imageData, x - 1, y + 1) + getRed(imageData, x, y + 1) + getRed(imageData, x + 1, y + 1);
+                gAvg = getGreen(imageData, x - 1, y - 1) + getGreen(imageData, x, y - 1) + getGreen(imageData, x + 1, y - 1)
+                        + getGreen(imageData, x - 1, y) + getGreen(imageData, x, y) + getGreen(imageData, x + 1, y)
+                        + getGreen(imageData, x - 1, y + 1) + getGreen(imageData, x, y + 1) + getGreen(imageData, x + 1, y + 1);
+                bAvg = getBlue(imageData, x - 1, y - 1) + getBlue(imageData, x, y - 1) + getBlue(imageData, x + 1, y - 1)
+                        + getBlue(imageData, x - 1, y) + getBlue(imageData, x, y) + getBlue(imageData, x + 1, y + 1)
+                        + getBlue(imageData, x - 1, y + 1) + getBlue(imageData, x, y + 1) + getBlue(imageData, x + 1, y + 1);
+                setPixel(imageData, x, y, (rAvg/9), (gAvg/9), (bAvg/9), 255);
+        }
 
         /*----------------------------------------------- Punto 5 -----------------------------------------------*/
 
@@ -327,7 +355,7 @@ TO DO LIST
 
 subir imagen
 que cuando descargas la canva se descargue con la resolucion anterior
-blur y/o deteccion de bordes
+deteccion de bordes (opcional)
 
 
 */ 
