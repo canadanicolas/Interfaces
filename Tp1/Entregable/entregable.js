@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let coordinates1;
         let coordinates2;
         
-        //Cambia el lapiz
+        //Selecciona o deselecciona el lapiz
         document.querySelector("#pencil").addEventListener("click", function () {
                 if (pencil) {
                         pencil = false;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
         });
 
-        //Cambia la goma
+        //Selecciona o deselecciona el lapiz
         document.querySelector("#eraser").addEventListener("click", function () { 
                 if (eraser) {
                         eraser = false;
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 active = false;
         });
 
-        //Activa el pintar en la canva cuando se hace un click
+        //Ve si esta activo el pintar con el mouse y si lo esta, toma las coordenadas del mouse y activa el dibujar
         function mouseClick() {                
                 if (active) {
                         coordinates1 = getCoordinates(event);
@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
         }
 
-        //Funcion de pintar con el lapiz o goma
+        //Funcion para dibujar lineas con el lapiz o la goma
+        //si esta activo el lapiz o la goma, toma las coordenadas del mouse y arranca a dibujar la linea
         function draw(ctx, event) {   
                 let color = "#000000";          
                 if ((pencil || eraser) && (active)) {
@@ -103,8 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let imageScaledHeight;
         let originalImage;
 
-        //Carga de archivos para poner el la canva
-        
+        //Carga de archivos para poner en la canva
+        //carga la imagen, luego compara la altura y ancho, calcula el aspect ratio de la foto
+        //y luego acomoda la canva (la altura) acorde a como termina el tamaño escalado de la foto.
         let input = document.querySelector('.file');
                 input.onchange = e => {
                         newCanvas();
@@ -147,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
         /*----------------------------------------------- Punto 3 -----------------------------------------------*/
 
         //Aplica el filtro binario al canva
+        //Calcula los valores rgb, luego los suma y los divide por 3 para tener el promedio
+        //por ultimo aplico el valor promedio a todos los valores rgb
+        //y por ultimo si el valor promedio es menor que 255/2 se pasa a 0(negro), si no a 255 (blanco)
         document.querySelector("#binary").addEventListener("click", applyBinaryFilter);
         function applyBinaryFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -171,6 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de grises al canva
+        //Calcula los valores rgb, luego los suma y los divide por 3 para tener el promedio
+        //por ultimo aplico el valor promedio a todos los valores rgb
         document.querySelector("#gray").addEventListener("click", applyGrayFilter);
         function applyGrayFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -185,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro negativo
+        //Toma los valores rgb y luego a 255 le resto su valor para poder obtener opuesto 
         document.querySelector("#negative").addEventListener("click", applyNegativeFilter);
         function applyNegativeFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -200,6 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro sepia
+        //Tomo los valores rgb del pixel y a cada uno se lo multiplica por una cantidad especifica 
+        //el cual le da un tono tirando a marron 
         document.querySelector("#sepia").addEventListener("click", applySepiaFilter);
         function applySepiaFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -215,6 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de brillo
+        //Esto se logra pasando los valores rgb del pixel a la escala hsl (hue, saturation y lightness)
+        //y luego se le aumenta el valor de lightness
+        //tambien puede conseguirse ampliando los valores de rgb por igual para acercarlo al blanco
         document.querySelector("#brightness").addEventListener("click", applyBrightnessFilter);
         function applyBrightnessFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -233,6 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
         /*----------------------------------------------- Punto 4 -----------------------------------------------*/
 
         //Aplica el filtro de saturacion
+        //Esto se logra pasando los valores rgb del pixel a la escala hsl (hue, saturation y lightness)
+        //y luego se le aumenta el valor de saturation
         document.querySelector("#saturation").addEventListener("click", applySaturationFilter);
         function applySaturationFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -248,6 +263,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro blur
+        //se agarra un pixel, luego se selecciona la matriz al rededor del pixel, luego se suman todos los valores 
+        //rgb de esa matriz y por ultimo al pixel seleccionado se le asigna el valor del promedio rgb de la matriz
         document.querySelector("#blur").addEventListener("click", applyBlurFilter);
         function applyBlurFilter(){
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -278,6 +295,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Aplica el filtro de matiz
+        //Esto se logra pasando los valores rgb del pixel a la escala hsl (hue, saturation y lightness)
+        //y luego se le aumenta el valor de hue
         document.querySelector("#matiz").addEventListener("click", applyHueFilter);
         function applyHueFilter() {
                 let imageData = ctx.getImageData(0, 0, c.width, c.height);
@@ -295,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
         /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 5 -----------------------------------------------*/
 
-        //Descarga la canva y no la imagen antigua modificada, checkear
+        //Descarga la imagen
         document.querySelector("#buttonDownload").addEventListener("click", download);
         function download() {
                 let download = document.getElementById("download");
@@ -390,10 +409,3 @@ function hslToRgb(h, s, l) {
         }
         return [ r * 255, g * 255, b * 255 ];
 }
-
-/*
-TO DO LIST
-
-que cuando descargas la canva se descargue con la resolucion anterior
-
-*/ 
