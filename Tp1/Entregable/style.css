@@ -34,3 +34,8 @@ p{
     height: 35px;
     width: 75px;
 }
+
+img{
+    max-width: 40px;
+    max-height: 40px;
+}
