@@ -133,7 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
         //Limpia la canva y carga la imagen original de nuevo
         document.querySelector("#cleanFilters").addEventListener("click", cleanFilters);
         function cleanFilters() {
-                newCanvas();
+                ctx.beginPath();
+                ctx.rect(0, 0, c.width, c.height);
+                ctx.fillStyle = "rgba(255,255,255,1)";
+                ctx.fill();
                 if (originalImage != null){
                         ctx.drawImage(originalImage, 0, 0, imageScaledWidth, imageScaledHeight);
                 }
