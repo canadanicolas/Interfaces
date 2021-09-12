@@ -4,12 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Seteo canva
         let c = document.querySelector("#canvas");
         let ctx = c.getContext("2d");
-
-        //Path de pintado de la canva
-        ctx.beginPath();
-        ctx.rect(0, 0, c.width, c.height);
-        ctx.fillStyle = "rgba(255,255,255,1)";
-        ctx.fill();
+        newCanvas();
 
         /*------------------------------------------ ----------------- ------------------------------------------*/
         /*----------------------------------------------- Punto 1 -----------------------------------------------*/
@@ -126,9 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 canvas.height = imageScaledHeight;
                                         } else {
                                                 imageAspectRatio = this.width / this.height;
-                                                imageScaledWidth = canvas.height;
-                                                imageScaledHeight = canvas.height * imageAspectRatio;
-                                                canvas.height = imageScaledHeight;
+                                                imageScaledHeight = canvas.height;
+                                                imageScaledWidth = canvas.height * imageAspectRatio;
+                                                canvas.width = imageScaledWidth;
                                         }
                                         ctx.drawImage(this, 0, 0, imageScaledWidth, imageScaledHeight); 
                                 }
@@ -326,6 +321,8 @@ document.addEventListener("DOMContentLoaded", function () {
         //Vuelve a pintar la canva de blanco (la limpia)
         document.querySelector("#new").addEventListener("click", newCanvas);
         function newCanvas(){
+                c.width = 1024;
+                c.height = 768;
                 ctx.beginPath();
                 ctx.rect(0, 0, c.width, c.height);
                 ctx.fillStyle = "rgba(255,255,255,1)";
