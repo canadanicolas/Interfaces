@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
         //Da las coordenadas del puntero para pintar
         function getCoordinates(event) {        
                 return {
-                        x: (event.clientX - 15), //15px de padding y margins 
-                        y: (event.clientY - 15)  //15px de padding y margins
+                        x: (event.layerX),
+                        y: (event.layerY)
                 };
         }
 
