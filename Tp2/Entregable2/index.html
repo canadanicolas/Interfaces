@@ -1,0 +1,44 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="style/style.css">
+	<title>Clase 1 - Template</title>
+</head>
+
+<body>
+	<div class="container">
+		<header>Forma linea para ganar</header>
+		<main>
+			<div>
+				<img src="img/precargada.png" alt="">
+				<img src="img/precargada2.png" alt="">
+				<img src="img/precargada.png" alt="">
+				<img src="img/precargada2.png" alt="">
+				<img src="img/precargada.png" alt="">
+				<button id="newGame">Start a new game!</button>
+			</div>
+			<canvas id="MyCanvas" width="500" height="500"></canvas>
+		</main>
+		<aside>
+			<h3>Settings</h3>
+			<div class="tools">
+				<p>Rows (6-20)</p><input type="number" id="rowsSelect">
+				<p>Columns (6-20</p><input type="number" id="columnsSelect">
+				<p>HeightBoard (400-800)</p><input type="number" id="heightSelect">
+				<p>WidthBoard (400-800)</p><input type="number" id="widthSelect">
+			</div>
+		</aside>
+		<footer>
+			Gracias por jugar!
+			<div class="	" id="message"></div>
+		</footer>
+	</div>
+</body>
+<script src="js/main.js"></script>
+<script src="js/Board.js"></script>
+<script src="js/Square.js"></script>
+
+</html>
