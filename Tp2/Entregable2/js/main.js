@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let canvas = document.querySelector("#MyCanvas");
     let ctx = canvas.getContext("2d");
     let messager = document.querySelector("#message");
-   
+
 
     // let isMouseDown = false;
 
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //boton inicio de juego
     document.querySelector("#newGame").addEventListener("click", function () {
 
+
         //variables de selectores
         let width = widthSelector.value;
         let height = heightSelector.value;
@@ -32,22 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
         let columns = columnsSelector.value;
         let limits = limitations(width, height, rows, columns);//auxiliar de limites
 
+
         if ((width != "" && height != "" && rows != "" && columns != "") &&
             limits) { //controla que las opciones sean correctas para iniciar
-            let cantRows = parseInt(rows)+1;
-            let cantColumns = parseInt(columns)+1;
-            let board = new Board(width, height,  //instancia un nuevo tablero
-                cantRows, cantColumns, ctx);
-            let boardWidth = board.getWidthBoard();   //toma dimensiones de tablero
-            let boardHeight = board.getHeightBoard();
-            canvas.width = boardWidth;          //canvas se adapta al tablero
-            canvas.height = boardHeight;
-            board.initializeBoard();           //se inicializa el tablero
+
+            let cantRows = parseInt(rows) + 1;  //variable añade una fila extra en blanco
+
+            let board = new Board(width, height,  //INSTANCIA UN NUEVO TABLERO
+                cantRows, columns, ctx);
+
+            canvasAdaptionToBoard(board)         //canvas se adapta al tablero     
+
+            board.initializeBoard();           //SE INICIALIZA EL TABLERO
+
             messager.innerHTML = "Pasala lindo pibi";
         } else {
             messager.innerHTML = "No estas ingresando los tamaños permitidos";
             newCanvas();
         }
+
 
         function limitations(width, height, rows, columns) {  //controla limites
             const minWidth = 400;
@@ -67,6 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
             else {
                 return false;
             }
+        }
+
+        function canvasAdaptionToBoard(board) {
+            let boardWidth = board.getWidthBoard();   //toma dimensiones de tablero
+            let boardHeight = board.getHeightBoard();
+            canvas.width = boardWidth;
+            canvas.height = boardHeight;
         }
 
     })
