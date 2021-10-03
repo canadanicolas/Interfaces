@@ -1,0 +1,14 @@
+.canva{
+    border: 3px solid black;
+}
+
+.Hidden{
+    display: none;
+}
+
+h2 {
+    margin-left: 0.3%;
+    text-shadow: 2px 2px 5px black;
+}
+
+

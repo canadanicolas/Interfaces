@@ -1,58 +1,33 @@
 class Square {
-
-    constructor(x, y, squareWidth, squareHeight, content, context, squareName) {
-        this.x = x;
-        this.y = y;
-        this.squareWidth = squareWidth;
-        this.squareHeight = squareHeight;
-        this.content = content;
-        this.ctx = context;
-        this.squareName = squareName;
+    constructor(id,context, posX, posY) {
+        this.context = context;
+        this.posX = posX;
+        this.posY = posY;
+        this.id = id;
     }
 
-
-    getX() {
-        return this.x;
+    draw() {
+        this.context.beginPath();
+        this.context.rect(this.posX, this.posY, 100, 100);
+        this.context.stroke();
     }
 
-    getY() {
-        return this.y;
+    addImage() {
+        let img = new Image();      
+        context.drawImage(document.querySelector("#tableroVacio"), this.posX, this.posY);
+
     }
 
-    getSquareHeight() {
-        return this.squareHeight;
+    setPosition(x, y) {
+        this.posX = x;
+        this.posY = y;
     }
 
-    getSquareWidth() {
-        return this.squareWidth;
+    getPosition() {
+        return {
+            x: this.posX,
+            y: this.posY
+        };
     }
-
-    getContent() {
-        return this.content;
-    }
-
-
-
-    createSquare() {              //se dibuja casillero
-        let name = this.squareName;
-        let borderWidth = 3;
-        var offset = borderWidth * 2;
-        this.ctx.beginPath();
-        if(this.y==0){
-            this.ctx.fillStyle = 'rgba(10, 70, 5, 0.3)';
-            this.ctx.fillRect(this.x - borderWidth, this.y - borderWidth, this.squareWidth + offset, this.squareHeight + offset);
-            this.ctx.fillStyle = 'rgba(10, 70, 5, 0.1)';
-            this.ctx.fillRect(this.x, this.y, this.squareWidth, this.squareHeight);
-
-        }else{
-            this.ctx.fillStyle = "black"
-            this.ctx.fillRect(this.x - borderWidth, this.y - borderWidth, this.squareWidth + offset, this.squareHeight + offset);
-            this.ctx.fillStyle = "#3C4F3B";
-            this.ctx.fillRect(this.x, this.y, this.squareWidth, this.squareHeight);
-            this.ctx.fillStyle = "black"
-            this.ctx.fillText(name,this.x + this.squareWidth/2,this.y + this.squareHeight/2);
-        } 
-    }
-
 
 }
