@@ -21,4 +21,26 @@ class Coin {
         context.closePath();
     }
 
+    isPointInside(posX, posY) {
+        let x = this.posX - posX;
+        let y = this.posY - posY;
+        return Math.sqrt(x * x + y * y) < 35;
+    }
+
+    setPosition(x, y) {
+        this.posX = x;
+        this.posY = y;
+    }
+
+    getPosition() {
+        return {
+            x: this.posX,
+            y: this.posY
+        };
+    }
+
+    getPlayer(){
+        return this.player;
+    }
+
 }

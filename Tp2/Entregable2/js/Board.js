@@ -4,6 +4,7 @@ class Board {
         this.j = 7;
         this.context = context;
         this.board = [];
+        this.insertsPoints = [];
     }
 
     createBoard() {
@@ -20,6 +21,10 @@ class Board {
                 id = id + 1;
             }
             square = this.board[x][0];
+            let pointToInsert = square.getPosition();
+            pointToInsert.x = pointToInsert.x + 50;
+            pointToInsert.y = pointToInsert.y - 30;
+            this.insertsPoints[x] = pointToInsert;
         }
     }
 
@@ -39,6 +44,52 @@ class Board {
                 square = this.board[x][y];
                 square.addImage();
             }
+        }
+    }
+
+    getInsertsPoints() {
+        return this.insertsPoints;
+    }
+
+    getInsertPosition(coin) {
+        for (let i = 0; i < this.insertsPoints.length; i++) {
+            let position = this.insertsPoints[i];
+            if (coin.isPointInside(position.x, position.y)) {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    insertInBoard(x, coin) {                
+        let square = new Square();
+        for (let y = 0; y < this.j; y++) {
+            square = this.board[x][y];
+            if (square.getStatus() !== false) {
+                if (y - 1 < 0) {
+                    return
+                } else {
+                    square = this.board[x][y - 1];
+                    square.setStatus(coin.getPlayer());
+                    return;
+                }
+            } else {
+                if (y === this.j - 1) {
+                    square = this.board[x][y];
+                    square.setStatus(coin.getPlayer());
+                    return;
+                }
+            }
+        }
+    }
+
+    resolveMove(coin) {
+        let position = this.getInsertPosition(coin);
+        if (position === null) {
+            return false;
+        } else {
+            this.insertInBoard(position, coin);
+            return true;                                 
         }
     }
 

@@ -21,4 +21,8 @@ class Player {
         return this.playerCoins;
     }
 
+    getPlayer(){
+        return this.player;
+    }
+
 }
