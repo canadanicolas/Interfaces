@@ -1,7 +1,7 @@
 class Board {
     constructor(context) {
-        this.i = 8;
-        this.j = 8;
+        this.i = 7;
+        this.j = 7;
         this.context = context;
         this.board = [];
     }

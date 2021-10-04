@@ -14,20 +14,8 @@ class Square {
 
     addImage() {
         let img = new Image();      
-        context.drawImage(document.querySelector("#tableroVacio"), this.posX, this.posY);
+        context.drawImage(document.querySelector("#cleanBoard"), this.posX, this.posY);
 
-    }
-
-    setPosition(x, y) {
-        this.posX = x;
-        this.posY = y;
-    }
-
-    getPosition() {
-        return {
-            x: this.posX,
-            y: this.posY
-        };
     }
 
 }
