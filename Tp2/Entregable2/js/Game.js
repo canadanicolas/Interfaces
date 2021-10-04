@@ -27,6 +27,7 @@ function start() {
     player2.createCoins(); 
     document.querySelector("#buttonStart").className = "hidden";
     document.querySelector("#buttonRestart").className = "";
+    document.querySelector("#turnPlayer1").className = "";
 }
 
 function drawCanvas() {
@@ -127,8 +128,12 @@ function deleteCoin(lastClickedFigure) {
 function changeTurn() {
     if (turn === player1) {
         turn = player2;
+        document.querySelector("#turnPlayer1").className = "hidden";
+        document.querySelector("#turnPlayer2").className = "";
     } else {
         turn = player1;
+        document.querySelector("#turnPlayer1").className = "";
+        document.querySelector("#turnPlayer2").className = "hidden";
     }
 }
 
