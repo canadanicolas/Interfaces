@@ -1,10 +1,11 @@
 class Coin {
-    constructor(id, context, posX, posY, player) {
+    constructor(id, context, posX, posY, player, colour) {
         this.id = id;
         this.context = context;
         this.posX = posX;
         this.posY = posY;
         this.player = player;
+        this.colour = colour;
     }
 
     drawCoin(player) {
@@ -12,10 +13,10 @@ class Coin {
         context.beginPath();
         let img = new Image();
         if (player === "1") {
-            context.drawImage(document.querySelector("#blueCoin"), this.posX - (imgSize / 2), this.posY - (imgSize / 2), imgSize, imgSize);
+            context.drawImage(document.querySelector(document.querySelector("#selectColour1 option:checked").value), this.posX - (imgSize / 2), this.posY - (imgSize / 2), imgSize, imgSize);
         } else {
             if (player === "2")
-            context.drawImage(document.querySelector("#redCoin"), this.posX - (imgSize / 2), this.posY - (imgSize / 2), imgSize, imgSize);
+            context.drawImage(document.querySelector(document.querySelector("#selectColour2 option:checked").value), this.posX - (imgSize / 2), this.posY - (imgSize / 2), imgSize, imgSize);
         }
         context.stroke();
         context.closePath();
@@ -41,6 +42,10 @@ class Coin {
 
     getPlayer(){
         return this.player;
+    }
+    
+    getColour(){
+        return this.colour;
     }
 
 }

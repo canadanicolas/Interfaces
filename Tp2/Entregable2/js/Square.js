@@ -1,10 +1,9 @@
 class Square {
-    constructor(id,context, posX, posY, status) {
+    constructor(id,context, posX, posY, colour) {
         this.context = context;
         this.posX = posX;
         this.posY = posY;
-        this.id = id;
-        this.status = false;
+        this.colour = false;
     }
 
     draw() {
@@ -15,15 +14,21 @@ class Square {
 
     addImage() {
         let img = new Image();
-        if(this.status == false){        
+        if(this.colour == false){        
             context.drawImage(document.querySelector("#cleanBoard"), this.posX, this.posY);
         }else{
-            if(this.status === "1"){
+            if(this.colour === "#blackCoin"){
+                context.drawImage(document.querySelector("#boardBlackCoin"), this.posX, this.posY);
+            }else if (this.colour ==="#blueCoin"){
                 context.drawImage(document.querySelector("#boardBlueCoin"), this.posX, this.posY);
-            }else{
-                if(this.status ==="2"){
-                    context.drawImage(document.querySelector("#boardRedCoin"), this.posX, this.posY);
-                }
+            }else if (this.colour ==="#greenCoin"){
+                context.drawImage(document.querySelector("#boardGreenCoin"), this.posX, this.posY);
+            }else if (this.colour ==="#purpleCoin"){
+                context.drawImage(document.querySelector("#boardPurpleCoin"), this.posX, this.posY);
+            }else if (this.colour ==="#redCoin"){
+                context.drawImage(document.querySelector("#boardRedCoin"), this.posX, this.posY);
+            }else if (this.colour ==="#yellowCoin"){
+                context.drawImage(document.querySelector("#boardYellowCoin"), this.posX, this.posY);
             }
         }
     }
@@ -35,12 +40,12 @@ class Square {
         };
     }
 
-    getStatus(){
-        return this.status;
+    getColour(){
+        return this.colour;
     }
 
-    setStatus(status){
-        this.status = status;
+    setColour(colour){
+        this.colour = colour;
     }
 
 }

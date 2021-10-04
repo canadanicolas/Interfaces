@@ -29,6 +29,8 @@ function start() {
     document.querySelector("#buttonRestart").className = "";
     document.querySelector("#turnPlayer1").className = "";
     document.querySelector("#turnPlayer2").className = "hidden";
+    document.querySelector("#selectColour1").className = "hidden";
+    document.querySelector("#selectColour2").className = "hidden";
     turn = player1; 
 }
 

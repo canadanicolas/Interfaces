@@ -15,7 +15,7 @@ class Board {
             for (let y = 0; y < this.j; y++) {
                 let posX = (x * 100) + 270;
                 let posY = (y * 100) + 90;
-                square = new Square(id, this.context, posX, posY,false);
+                square = new Square(id, this.context, posX, posY, false);
                 square.addImage(posX, posY);
                 this.board[x][y] = square;
                 id = id + 1;
@@ -65,18 +65,18 @@ class Board {
         let square = new Square();
         for (let y = 0; y < this.j; y++) {
             square = this.board[x][y];
-            if (square.getStatus() !== false) {
+            if (square.getColour() !== false) {
                 if (y - 1 < 0) {
                     return
                 } else {
                     square = this.board[x][y - 1];
-                    square.setStatus(coin.getPlayer());
+                    square.setColour(coin.getColour());
                     return;
                 }
             } else {
                 if (y === this.j - 1) {
                     square = this.board[x][y];
-                    square.setStatus(coin.getPlayer());
+                    square.setColour(coin.getColour());
                     return;
                 }
             }
