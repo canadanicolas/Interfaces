@@ -19,10 +19,10 @@ class Square {
             context.drawImage(document.querySelector("#cleanBoard"), this.posX, this.posY);
         }else{
             if(this.status === "1"){
-                context.drawImage(document.querySelector("#coinP1"), this.posX, this.posY);
+                context.drawImage(document.querySelector("#boardBlueCoin"), this.posX, this.posY);
             }else{
                 if(this.status ==="2"){
-                    context.drawImage(document.querySelector("#coinP2"), this.posX, this.posY);
+                    context.drawImage(document.querySelector("#boardRedCoin"), this.posX, this.posY);
                 }
             }
         }

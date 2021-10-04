@@ -29,7 +29,7 @@ function start() {
     document.querySelector("#buttonRestart").className = "";
     document.querySelector("#turnPlayer1").className = "";
     document.querySelector("#turnPlayer2").className = "hidden";
-    turn = player1;
+    turn = player1; 
 }
 
 function drawCanvas() {
