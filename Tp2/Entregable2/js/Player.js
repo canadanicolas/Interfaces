@@ -5,6 +5,7 @@ class Player {
         this.posY = 800;
         this.posX = posX;
         this.context = context;
+        this.turn = false;
     }
 
     createCoins(){
@@ -23,6 +24,14 @@ class Player {
 
     getPlayer(){
         return this.player;
+    }
+
+    getTurn(){
+        return this.turn;
+    }
+    
+    setTurn(turn){
+        this.turn = turn;
     }
 
 }

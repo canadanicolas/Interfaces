@@ -14,15 +14,19 @@ let lastClickedFigure = null;
 let oldPosition = 0;
 let posicionFichasY = 800;
 
+let turn = player1;
+
 clearCanvas();
 
 document.querySelector("#buttonStart").addEventListener("click", start);
+document.querySelector("#buttonRestart").addEventListener("click", start);
+
 function start() {
     board.createBoard();
     player1.createCoins();
     player2.createCoins(); 
-    document.querySelector("#buttonStart").className = "Hidden";
-    document.querySelector("#buttonRestart").className = "Button";
+    document.querySelector("#buttonStart").className = "hidden";
+    document.querySelector("#buttonRestart").className = "";
 }
 
 function drawCanvas() {
@@ -67,6 +71,7 @@ canvas.addEventListener('mouseup', function () {
         let outcome = board.resolveMove(lastClickedFigure);
         if (outcome === true) {
             deleteCoin(lastClickedFigure);
+            changeTurn(lastClickedFigure.getPlayer());
         } else {
             lastClickedFigure.setPosition(oldPosition.x, oldPosition.y);
         }
@@ -79,29 +84,51 @@ canvas.addEventListener('mouseup', function () {
 
 function findClickedFigure(posX, posY) {
     for (let i = 0; i < coinsPlayer1.length; i++) {
-        let coin = coinsPlayer1[i];
-        if (coin !== null) {
-            if (coin.isPointInside(posX, posY)) {
-                return coin;
+        if (turn === player1) {
+            let coin = coinsPlayer1[i];
+            if (coin !== null) {
+                if (coin.isPointInside(posX, posY)) {
+                    return coin;
+                }
             }
-        } 
+        } else {
+            if (turn === player2) {
+                let coin = coinsPlayer2[i];
+                if (coin !== null) {
+                    if (coin.isPointInside(posX, posY)) {
+                        return coin;
+                    }
+                }
+            }
+        }
     }
 }
 
 function deleteCoin(lastClickedFigure) {
-    for (let i = 0; i < coinsPlayer1.length; i++) {
-        let coin = coinsPlayer1[i];
-        if (coin === lastClickedFigure) {
-            coinsPlayer1[i] = null;
-            lastClickedFigure.setPosition(0, 0);
+    if (turn === player1) {
+        for (let i = 0; i < coinsPlayer1.length; i++) {
+            let coin = coinsPlayer1[i];
+            if (coin === lastClickedFigure) {
+                coinsPlayer1[i] = null;
+                lastClickedFigure.setPosition(0, 0);
+            }
+        }
+    } else {
+        for (let i = 0; i < coinsPlayer2.length; i++) {
+            let coin = coinsPlayer2[i];
+            if (coin === lastClickedFigure) {
+                coinsPlayer2[i] = null;
+                lastClickedFigure.setPosition(0, 0);
+            }
         }
     }
-    for (let j = 0; j < coinsPlayer2.length; j++) {
-        let coin = coinsPlayer2[j];
-        if (coin === lastClickedFigure) {
-            coinsPlayer2[j] = null;
-            lastClickedFigure.setPosition(0, 0);
-        }
+}
+
+function changeTurn() {
+    if (turn === player1) {
+        turn = player2;
+    } else {
+        turn = player1;
     }
 }
 
