@@ -28,6 +28,8 @@ function start() {
     document.querySelector("#buttonStart").className = "hidden";
     document.querySelector("#buttonRestart").className = "";
     document.querySelector("#turnPlayer1").className = "";
+    document.querySelector("#turnPlayer2").className = "hidden";
+    turn = player1;
 }
 
 function drawCanvas() {
