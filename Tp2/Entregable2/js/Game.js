@@ -16,12 +16,13 @@ let posicionFichasY = 800;
 
 let turn = player1;
 
+let gameStarted = false;
+
 clearCanvas();
 
 document.querySelector("#buttonStart").addEventListener("click", start);
-document.querySelector("#buttonRestart").addEventListener("click", start);
-
 function start() {
+    gameStarted = true;
     board.createBoard();
     player1.createCoins();
     player2.createCoins(); 
@@ -34,17 +35,31 @@ function start() {
     turn = player1; 
 }
 
-function drawCanvas() {
+document.querySelector("#buttonRestart").addEventListener("click", restart);
+function restart() {
+    gameStarted = false;
     clearCanvas();
-    board.drawBoard();
-    for (let i = 0; i < coinsPlayer1.length; i++) {
-        let coin1 = coinsPlayer1[i];
-        let coin2 = coinsPlayer2[i];
-        if (coin1 !== null) {
-            coin1.drawCoin(player1.getPlayer());
-        }
-        if (coin2 !== null) {
-            coin2.drawCoin(player2.getPlayer());
+    document.querySelector("#buttonStart").className = "";
+    document.querySelector("#buttonRestart").className = "hidden";
+    document.querySelector("#selectColour1").className = "";
+    document.querySelector("#selectColour2").className = "";
+    document.querySelector("#turnPlayer1").className = "hidden";
+    document.querySelector("#turnPlayer2").className = "hidden";
+}
+
+function drawCanvas() {
+    if (gameStarted == true) {
+        clearCanvas();
+        board.drawBoard();
+        for (let i = 0; i < coinsPlayer1.length; i++) {
+            let coin1 = coinsPlayer1[i];
+            let coin2 = coinsPlayer2[i];
+            if (coin1 !== null) {
+                coin1.drawCoin(player1.getPlayer());
+            }
+            if (coin2 !== null) {
+                coin2.drawCoin(player2.getPlayer());
+            }
         }
     }
 }
@@ -140,5 +155,7 @@ function changeTurn() {
         document.querySelector("#turnPlayer2").className = "hidden";
     }
 }
+
+
 
 
