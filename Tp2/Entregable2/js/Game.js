@@ -64,6 +64,9 @@ function restart() {
     document.querySelector("#selectColour2").className = "";
     document.querySelector("#turnPlayer1").className = "hidden";
     document.querySelector("#turnPlayer2").className = "hidden";
+    document.querySelector("#canvas").className = "canva";
+    document.querySelector("#player1WinMessage").className = "hidden";
+    document.querySelector("#player2WinMessage").className = "hidden";
 }
 
 function drawCanvas() {
@@ -111,6 +114,19 @@ canvas.addEventListener('mouseup', function () {
         if (outcome === true) {
             deleteCoin(lastClickedFigure);
             changeTurn(lastClickedFigure.getPlayer());
+            let play = board.checkPlay(lastClickedFigure.getColour());
+            if (play === true) {
+                document.querySelector("#canvas").className = "hidden";
+                if (lastClickedFigure.getPlayer() === "1") {
+                    document.querySelector("#player1WinMessage").className = "";
+                    document.querySelector("#turnPlayer1").className = "hidden";
+                    document.querySelector("#turnPlayer2").className = "hidden";  
+                } else {
+                    document.querySelector("#player2WinMessage").className = "";
+                    document.querySelector("#turnPlayer1").className = "hidden";
+                    document.querySelector("#turnPlayer2").className = "hidden"; 
+                }
+            }
         } else {
             lastClickedFigure.setPosition(oldPosition.x, oldPosition.y);
         }

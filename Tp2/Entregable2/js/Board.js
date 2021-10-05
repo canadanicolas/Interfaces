@@ -93,7 +93,133 @@ class Board {
         }
     }
 
+    checkPlay(colour) {
+        let square = new Square();
+        for (let x = this.i - 1; x > -1; x--) {
+            for (let y = 0; y < this.j; y++) {
+                let counter = 0;
+                square = this.board[x][y];
+                if (square.getColour() === colour) {
+                    counter = this.checkUp(colour, x, y);
+                    if (counter === 4) {
+                        return true;
+                    }
+                    counter = this.checkLeft(colour, x, y);
+                    
+                    if (counter === 4) {
+                        return true;
+                    }
+                    counter = this.checkRight(colour, x, y);
+                    
+                    if (counter === 4) {
+                        return true;
+                    }
+                    counter = this.checkLeftDiagonal(colour, x, y);
+                    
+                    if (counter === 4) {
+                        return true;
+                    }
+                    counter = this.checkRigthDiagonal(colour, x, y);
+                    
+                    if (counter === 4) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    checkUp(colour, x, y) {
+        let counter = 0;
+        while (counter <= 4 && y >= 0) {
+            let square = this.board[x][y];
+            if (square.getColour() === colour) {
+                counter++;
+                y--;
+            } else {
+                return 0;
+            }
+            if (counter === 4) {
+                return counter;
+            }
+        }
+    }
+
+    checkLeft(colour, x, y) {
+        let counter = 0;
+        while (counter <= 4 && x >= 0) {
+            let square = this.board[x][y];
+            if (square.getColour() === colour) {
+                counter++;
+                x--;
+            } else {
+                return 0;
+            }
+            if (counter === 4) {
+                return counter;
+            }
+        }
+        
+    }
+
+    checkRight(colour, x, y) {
+        let counter = 0;
+        while (counter <= 4 && x < this.i) {
+            let square = this.board[x][y];
+            if (square.getColour() === colour) {
+                counter++;
+                x++;
+            } else {
+                return 0;
+            }
+            if (counter === 4) {
+                return counter;
+            }
+        }
+        
+    }
+
+
+
+    checkLeftDiagonal(colour, x, y) {
+        let counter = 0;
+        while (counter <= 4 && x > -1 && y >= 0) {
+            let square = this.board[x][y];
+            if (square.getColour() === colour) {
+                counter++;
+                x--;
+                y--;
+            } else {
+                return 0;
+            }
+            if (counter === 4) {
+                return counter;
+            }
+        }
+        
+    }
+
+
+    checkRigthDiagonal(colour, x, y) {
+        let counter = 0;
+        while (counter <= 4 && x < this.i && y >= 0) {
+
+            let square = this.board[x][y];
+            if (square.getColour() === colour) {
+                counter++;
+                x++;
+                y--;
+            } else {
+                return 0;
+            }
+            if (counter === 4) {
+                return counter;
+            }
+        }
+        
+    }
 }
+
 
 
 
