@@ -11,21 +11,32 @@
     <div class="container">
         <div>
             <div>
-                <h2>CUATRO EN LINEA</h2>
+                <h2>JUEGO CUATRO EN LINEA</h2>
             </div>
             <div>
                 <button id="buttonStart">Start</button>
-                <select id="selectColour1">Elige el color de P1
+                <label id="labelColour1" for="">Elige el color del P2:</label>
+                <select id="selectColour1">
                     <option value="#blackCoin">black</option>
                     <option value="#blueCoin">blue</option>
                     <option value="#greenCoin">green</option>
+                    <option value="#purpleCoin">purple</option>
+                    <option value="#redCoin">red</option>
+                    <option value="#yellowCoin">yellow</option>
                 </select>
-                <select id="selectColour2">Elige el color de P2
+                <label id="labelColour2" for="">Elige el color del P2:</label>
+                <select id="selectColour2">
+                    <option value="#blackCoin">black</option>
+                    <option value="#blueCoin">blue</option>
+                    <option value="#greenCoin">green</option>
                     <option value="#purpleCoin">purple</option>
                     <option value="#redCoin">red</option>
                     <option value="#yellowCoin">yellow</option>
                 </select>
                 <button id="buttonRestart" class="hidden">Restart</button>
+            </div>
+            <div>
+                <h2 class="hidden" id="errorColoresSeleccionados">Por favor seleccione colores diferentes</h2>
             </div>
             <div id="turnPlayer1" class="hidden">
                 <h2>Turno jugador 1</h3>

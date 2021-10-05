@@ -22,17 +22,34 @@ clearCanvas();
 
 document.querySelector("#buttonStart").addEventListener("click", start);
 function start() {
-    gameStarted = true;
-    board.createBoard();
-    player1.createCoins();
-    player2.createCoins(); 
-    document.querySelector("#buttonStart").className = "hidden";
-    document.querySelector("#buttonRestart").className = "";
-    document.querySelector("#turnPlayer1").className = "";
-    document.querySelector("#turnPlayer2").className = "hidden";
-    document.querySelector("#selectColour1").className = "hidden";
-    document.querySelector("#selectColour2").className = "hidden";
-    turn = player1; 
+    let coloursSelected = areColoursDuplicated();
+    if (coloursSelected == false){
+        gameStarted = true;
+        board.createBoard();
+        player1.createCoins();
+        player2.createCoins(); 
+        document.querySelector("#buttonStart").className = "hidden";
+        document.querySelector("#buttonRestart").className = "";
+        document.querySelector("#turnPlayer1").className = "";
+        document.querySelector("#turnPlayer2").className = "hidden";
+        document.querySelector("#labelColour1").className = "hidden";
+        document.querySelector("#labelColour2").className = "hidden";
+        document.querySelector("#selectColour1").className = "hidden";
+        document.querySelector("#selectColour2").className = "hidden";
+        turn = player1;
+    }
+}
+
+function areColoursDuplicated(){
+    let colourP1 = document.querySelector("#selectColour1 option:checked").value;
+    let colourP2 = document.querySelector("#selectColour2 option:checked").value;
+    if (colourP1 == colourP2) {
+        document.querySelector("#errorColoresSeleccionados").className = "";
+        return true;
+    }
+    else 
+    document.querySelector("#errorColoresSeleccionados").className = "hidden";
+    return false;
 }
 
 document.querySelector("#buttonRestart").addEventListener("click", restart);
@@ -41,6 +58,8 @@ function restart() {
     clearCanvas();
     document.querySelector("#buttonStart").className = "";
     document.querySelector("#buttonRestart").className = "hidden";
+    document.querySelector("#labelColour1").className = "";
+    document.querySelector("#labelColour2").className = "";
     document.querySelector("#selectColour1").className = "";
     document.querySelector("#selectColour2").className = "";
     document.querySelector("#turnPlayer1").className = "hidden";

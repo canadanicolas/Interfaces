@@ -7,12 +7,35 @@
 }
 
 h2 {
-    margin-left: 0.3%;
-    text-shadow: 2px 2px 5px black;
+    font-weight: bold;
 }
 
 .container  {
     background-color: aquamarine;
     text-align: center;
+}
+
+label {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#errorColoresSeleccionados{
+    color: red;
+    text-decoration-line: underline;
+}
+
+button {
+    background-color: white;
+    border: 3px solid gray;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+select {
+    background-color: white;
+    border: 3px solid gray;
+    border-radius: 4px;
+    font-size: 18px;
 }
 
