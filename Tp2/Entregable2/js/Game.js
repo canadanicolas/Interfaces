@@ -28,6 +28,11 @@ function start() {
     if (coloursSelected == false){
         gameStarted = true;
         cantEnLinea = document.querySelector("#selectXenLinea option:checked").value;
+        if (cantEnLinea == 3) {
+            player2.setPosX(980)
+        } else if (cantEnLinea == 5){
+            player2.setPosX(1180)
+        }
         board.createBoard(cantEnLinea);
         player1.createCoins();
         player2.createCoins(); 

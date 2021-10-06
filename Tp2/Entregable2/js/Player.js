@@ -40,4 +40,8 @@ class Player {
         this.turn = turn;
     }
 
+    setPosX(x){
+        this.posX = x;
+    }
+
 }
