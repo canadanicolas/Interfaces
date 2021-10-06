@@ -15,7 +15,14 @@ class Board {
         for (let x = 0; x < this.cantTablero; x++) {
             this.board[x] = [];
             for (let y = 0; y < this.cantTablero; y++) {
-                let posX = (x * 100) + 270;
+                let posX = 0;
+                if (this.cantEnLinea == 3) {
+                    posX = (x * 100) + 360;
+                } else if (this.cantEnLinea == 4) {
+                    posX = (x * 100) + 310;
+                } else if (this.cantEnLinea == 5) {
+                    posX = (x * 100) + 260;
+                }
                 let posY = (y * 100) + 90;
                 square = new Square(id, this.context, posX, posY, false);
                 square.addImage(posX, posY);

@@ -2,8 +2,8 @@ let canvas = document.querySelector("#canvas");
 let context = canvas.getContext("2d");
 
 let board = new Board(context);
-let player1 = new Player("1", 150, this.context);
-let player2 = new Player("2", 1080, this.context);
+let player1 = new Player("1", this.context);
+let player2 = new Player("2", this.context);
 let img = new Image();
 
 let coinsPlayer1 = player1.getCoins();
@@ -25,17 +25,15 @@ clearCanvas();
 document.querySelector("#buttonStart").addEventListener("click", start);
 function start() {
     let coloursSelected = areColoursDuplicated();
+
     if (coloursSelected == false){
         gameStarted = true;
         cantEnLinea = document.querySelector("#selectXenLinea option:checked").value;
-        if (cantEnLinea == 3) {
-            player2.setPosX(980)
-        } else if (cantEnLinea == 5){
-            player2.setPosX(1180)
-        }
+
         board.createBoard(cantEnLinea);
-        player1.createCoins();
-        player2.createCoins(); 
+        player1.createCoins(cantEnLinea);
+        player2.createCoins(cantEnLinea); 
+
         document.querySelector("#buttonStart").className = "hidden";
         document.querySelector("#buttonRestart").className = "";
         document.querySelector("#turnPlayer1").className = "";
