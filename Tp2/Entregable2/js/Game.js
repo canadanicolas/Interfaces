@@ -18,6 +18,8 @@ let turn = player1;
 
 let gameStarted = false;
 
+let cantEnLinea = 0;
+
 clearCanvas();
 
 document.querySelector("#buttonStart").addEventListener("click", start);
@@ -25,7 +27,8 @@ function start() {
     let coloursSelected = areColoursDuplicated();
     if (coloursSelected == false){
         gameStarted = true;
-        board.createBoard();
+        cantEnLinea = document.querySelector("#selectXenLinea option:checked").value;
+        board.createBoard(cantEnLinea);
         player1.createCoins();
         player2.createCoins(); 
         document.querySelector("#buttonStart").className = "hidden";
@@ -33,9 +36,11 @@ function start() {
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
         document.querySelector("#labelColour1").className = "hidden";
-        document.querySelector("#labelColour2").className = "hidden";
         document.querySelector("#selectColour1").className = "hidden";
+        document.querySelector("#labelColour2").className = "hidden";
         document.querySelector("#selectColour2").className = "hidden";
+        document.querySelector("#selectXenLinea").className = "hidden";
+        document.querySelector("#labelXenLinea").className = "hidden";
         turn = player1;
     }
 }
@@ -59,9 +64,11 @@ function restart() {
     document.querySelector("#buttonStart").className = "";
     document.querySelector("#buttonRestart").className = "hidden";
     document.querySelector("#labelColour1").className = "";
-    document.querySelector("#labelColour2").className = "";
     document.querySelector("#selectColour1").className = "";
+    document.querySelector("#labelColour2").className = "";
     document.querySelector("#selectColour2").className = "";
+    document.querySelector("#selectXenLinea").className = "";
+    document.querySelector("#labelXenLinea").className = "";
     document.querySelector("#turnPlayer1").className = "hidden";
     document.querySelector("#turnPlayer2").className = "hidden";
     document.querySelector("#canvas").className = "canva";
@@ -69,7 +76,7 @@ function restart() {
     document.querySelector("#player2WinMessage").className = "hidden";
 }
 
-function drawCanvas() {
+function drawCanvas() { //va mostrando y dibujando el tablero ingame
     if (gameStarted == true) {
         clearCanvas();
         board.drawBoard();

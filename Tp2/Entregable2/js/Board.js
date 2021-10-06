@@ -1,18 +1,20 @@
 class Board {
     constructor(context) {
-        this.i = 7;
-        this.j = 7;
         this.context = context;
         this.board = [];
         this.insertsPoints = [];
+        this.cantTablero = 0;
+        this.cantEnLinea = 0;
     }
 
-    createBoard() {
+    createBoard(cantEnLinea) {
+        this.cantEnLinea = parseInt(cantEnLinea);
+        this.cantTablero = parseInt(cantEnLinea) + parseInt(3);
         let square;
         let id = 0;
-        for (let x = 0; x < this.i; x++) {
+        for (let x = 0; x < this.cantTablero; x++) {
             this.board[x] = [];
-            for (let y = 0; y < this.j; y++) {
+            for (let y = 0; y < this.cantTablero; y++) {
                 let posX = (x * 100) + 270;
                 let posY = (y * 100) + 90;
                 square = new Square(id, this.context, posX, posY, false);
@@ -28,19 +30,10 @@ class Board {
         }
     }
 
-    resetBoard() {
-        for (let x = 0; x < this.i; x++) {
-            for (let y = 0; y < this.j; y++) {
-                let square = this.board[x][y];
-                this.board[x][y] = square;
-            }
-        }
-    }
-
     drawBoard() {
         let square;
-        for (let x = 0; x < this.i; x++) {
-            for (let y = 0; y < this.j; y++) {
+        for (let x = 0; x < this.cantTablero; x++) {
+            for (let y = 0; y < this.cantTablero; y++) {
                 square = this.board[x][y];
                 square.addImage();
             }
@@ -63,7 +56,7 @@ class Board {
 
     insertInBoard(x, coin) {                
         let square = new Square();
-        for (let y = 0; y < this.j; y++) {
+        for (let y = 0; y < this.cantTablero; y++) {
             square = this.board[x][y];
             if (square.getColour() !== false) {
                 if (y - 1 < 0) {
@@ -74,7 +67,7 @@ class Board {
                     return;
                 }
             } else {
-                if (y === this.j - 1) {
+                if (y === this.cantTablero - 1) {
                     square = this.board[x][y];
                     square.setColour(coin.getColour());
                     return;
@@ -95,33 +88,33 @@ class Board {
 
     checkPlay(colour) {
         let square = new Square();
-        for (let x = this.i - 1; x > -1; x--) {
-            for (let y = 0; y < this.j; y++) {
+        for (let x = this.cantTablero - 1; x > -1; x--) {
+            for (let y = 0; y < this.cantTablero; y++) {
                 let counter = 0;
                 square = this.board[x][y];
                 if (square.getColour() === colour) {
                     counter = this.checkUp(colour, x, y);
-                    if (counter === 4) {
+                    if (counter === this.cantEnLinea) {
                         return true;
                     }
                     counter = this.checkLeft(colour, x, y);
                     
-                    if (counter === 4) {
+                    if (counter === this.cantEnLinea) {
                         return true;
                     }
                     counter = this.checkRight(colour, x, y);
                     
-                    if (counter === 4) {
+                    if (counter === this.cantEnLinea) {
                         return true;
                     }
                     counter = this.checkLeftDiagonal(colour, x, y);
                     
-                    if (counter === 4) {
+                    if (counter === this.cantEnLinea) {
                         return true;
                     }
                     counter = this.checkRigthDiagonal(colour, x, y);
                     
-                    if (counter === 4) {
+                    if (counter === this.cantEnLinea) {
                         return true;
                     }
                 }
@@ -131,7 +124,7 @@ class Board {
 
     checkUp(colour, x, y) {
         let counter = 0;
-        while (counter <= 4 && y >= 0) {
+        while (counter <= this.cantEnLinea && y >= 0) {
             let square = this.board[x][y];
             if (square.getColour() === colour) {
                 counter++;
@@ -139,7 +132,7 @@ class Board {
             } else {
                 return 0;
             }
-            if (counter === 4) {
+            if (counter === this.cantEnLinea) {
                 return counter;
             }
         }
@@ -147,7 +140,7 @@ class Board {
 
     checkLeft(colour, x, y) {
         let counter = 0;
-        while (counter <= 4 && x >= 0) {
+        while (counter <= this.cantEnLinea && x >= 0) {
             let square = this.board[x][y];
             if (square.getColour() === colour) {
                 counter++;
@@ -155,7 +148,7 @@ class Board {
             } else {
                 return 0;
             }
-            if (counter === 4) {
+            if (counter === this.cantEnLinea) {
                 return counter;
             }
         }
@@ -164,7 +157,7 @@ class Board {
 
     checkRight(colour, x, y) {
         let counter = 0;
-        while (counter <= 4 && x < this.i) {
+        while (counter <= this.cantEnLinea && x < this.i) {
             let square = this.board[x][y];
             if (square.getColour() === colour) {
                 counter++;
@@ -172,7 +165,7 @@ class Board {
             } else {
                 return 0;
             }
-            if (counter === 4) {
+            if (counter === this.cantEnLinea) {
                 return counter;
             }
         }
@@ -183,7 +176,7 @@ class Board {
 
     checkLeftDiagonal(colour, x, y) {
         let counter = 0;
-        while (counter <= 4 && x > -1 && y >= 0) {
+        while (counter <= this.cantEnLinea && x > -1 && y >= 0) {
             let square = this.board[x][y];
             if (square.getColour() === colour) {
                 counter++;
@@ -192,7 +185,7 @@ class Board {
             } else {
                 return 0;
             }
-            if (counter === 4) {
+            if (counter === this.cantEnLinea) {
                 return counter;
             }
         }
@@ -202,7 +195,7 @@ class Board {
 
     checkRigthDiagonal(colour, x, y) {
         let counter = 0;
-        while (counter <= 4 && x < this.i && y >= 0) {
+        while (counter <= this.cantEnLinea && x < this.cantTablero && y >= 0) {
 
             let square = this.board[x][y];
             if (square.getColour() === colour) {
@@ -212,7 +205,7 @@ class Board {
             } else {
                 return 0;
             }
-            if (counter === 4) {
+            if (counter === this.cantEnLinea) {
                 return counter;
             }
         }
