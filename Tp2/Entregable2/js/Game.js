@@ -31,10 +31,10 @@ function start() {
 
         cantEnLinea = document.querySelector("#selectXenLinea option:checked").value;
 
-        player1.setName(document.querySelector("nameP1"));
-        player2.setName(document.querySelector("nameP2"));
-        console.log(document.querySelector("nameP1"));
-        console.log(document.querySelector("nameP2"));
+        player1.setName(document.querySelector("#nameP1").value);
+        player2.setName(document.querySelector("#nameP2").value);
+        console.log(document.querySelector("#nameP1").value);
+        console.log(document.querySelector("#nameP2").value);
 
         board.createBoard(cantEnLinea);
 
