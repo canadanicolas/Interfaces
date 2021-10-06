@@ -11,35 +11,48 @@
     <div class="container">
         <div>
             <div>
-                <h2>JUEGO CUATRO EN LINEA</h2>
+                <h2>JUEGO X EN LINEA</h2>
             </div>
             <div>
                 <button id="buttonStart">Start</button>
-                <label id="labelColour1" for="">Elige el color del P2:</label>
-                <select id="selectColour1">
-                    <option value="#blackCoin">black</option>
-                    <option value="#blueCoin">blue</option>
-                    <option value="#greenCoin">green</option>
-                    <option value="#purpleCoin">purple</option>
-                    <option value="#redCoin">red</option>
-                    <option value="#yellowCoin">yellow</option>
-                </select>
-                <label id="labelColour2" for="">Elige el color del P2:</label>
-                <select id="selectColour2">
-                    <option value="#blackCoin">black</option>
-                    <option value="#blueCoin">blue</option>
-                    <option value="#greenCoin">green</option>
-                    <option value="#purpleCoin">purple</option>
-                    <option value="#redCoin">red</option>
-                    <option value="#yellowCoin">yellow</option>
-                </select>
-                <label id="labelXenLinea" for="">Elige la cantidad de fichas en linea:</label>
-                <select id="selectXenLinea">
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
                 <button id="buttonRestart" class="hidden">Restart</button>
+            </div>
+            <p></p>
+            <div id="hideInGame">
+                <div>
+                    <label for="">Inserte el nombre del P1</label>
+                    <input id="nameP1" type="text">
+                    <label id="labelColour1" for="">Elige el color del P1:</label>
+                    <select id="selectColour1">
+                        <option value="#blackCoin">black</option>
+                        <option value="#blueCoin">blue</option>
+                        <option value="#greenCoin">green</option>
+                        <option value="#purpleCoin">purple</option>
+                        <option value="#redCoin">red</option>
+                        <option value="#yellowCoin">yellow</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Inserte el nombre del P2</label>
+                    <input id="nameP2" type="text">
+                    <label id="labelColour2" for="">Elige el color del P2:</label>
+                    <select id="selectColour2">
+                        <option value="#blackCoin">black</option>
+                        <option value="#blueCoin">blue</option>
+                        <option value="#greenCoin">green</option>
+                        <option value="#purpleCoin">purple</option>
+                        <option value="#redCoin">red</option>
+                        <option value="#yellowCoin">yellow</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="labelXenLinea" for="">Elige la cantidad de fichas en linea:</label>
+                    <select id="selectXenLinea">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <h2 class="hidden" id="errorColoresSeleccionados">Por favor seleccione colores diferentes</h2>
@@ -50,11 +63,8 @@
             <div id="turnPlayer2" class="hidden">
                 <h2>Turno jugador 2</h3>
             </div>
-            <div id="player1WinMessage" class="hidden">
-                <h2>A ganado el Jugador 1</h2>
-            </div>
-            <div id="player2WinMessage" class="hidden">
-                <h2>A ganado el Jugador 2</h2>
+            <div id="playerWinMessageContainer" class="hidden">
+                <h2 id="playerWinMessage"></h2>
             </div>
             <div>
                 <canvas id="canvas" class="canva" width="1300" height="900"></canvas>

@@ -3,18 +3,26 @@ class Board {
         this.context = context;
         this.board = [];
         this.insertsPoints = [];
-        this.cantTablero = 0;
+        this.cantTableroX = 0;
+        this.cantTableroY = 0;
         this.cantEnLinea = 0;
     }
 
+    /* recibe la cantidad en linea que selecciono el player, lo setea a la clase board y con eso determina
+    el tamaño del tablero que se va a utilizar.
+    se crea una matriz board la cual va a guardar si hay fichas o no a futuro.
+    va dibujando los casilleros a medida que se va creando la matriz
+    al final crea los puntos de insercion en x e y por los cuales el jugador va a poner las fichas
+    */
     createBoard(cantEnLinea) {
         this.cantEnLinea = parseInt(cantEnLinea);
-        this.cantTablero = parseInt(cantEnLinea) + parseInt(3);
+        this.cantTableroX = parseInt(cantEnLinea) + parseInt(3);
+        this.cantTableroY = parseInt(cantEnLinea) + parseInt(2);
         let square;
         let id = 0;
-        for (let x = 0; x < this.cantTablero; x++) {
+        for (let x = 0; x < this.cantTableroX; x++) {
             this.board[x] = [];
-            for (let y = 0; y < this.cantTablero; y++) {
+            for (let y = 0; y < this.cantTableroY; y++) {
                 let posX = 0;
                 if (this.cantEnLinea == 3) {
                     posX = (x * 100) + 360;
@@ -37,10 +45,11 @@ class Board {
         }
     }
 
+    /*dibuja el tablero casillero por casillero*/
     drawBoard() {
         let square;
-        for (let x = 0; x < this.cantTablero; x++) {
-            for (let y = 0; y < this.cantTablero; y++) {
+        for (let x = 0; x < this.cantTableroX; x++) {
+            for (let y = 0; y < this.cantTableroY; y++) {
                 square = this.board[x][y];
                 square.addImage();
             }
@@ -61,28 +70,9 @@ class Board {
         return null;
     }
 
-    insertInBoard(x, coin) {                
-        let square = new Square();
-        for (let y = 0; y < this.cantTablero; y++) {
-            square = this.board[x][y];
-            if (square.getColour() !== false) {
-                if (y - 1 < 0) {
-                    return
-                } else {
-                    square = this.board[x][y - 1];
-                    square.setColour(coin.getColour());
-                    return;
-                }
-            } else {
-                if (y === this.cantTablero - 1) {
-                    square = this.board[x][y];
-                    square.setColour(coin.getColour());
-                    return;
-                }
-            }
-        }
-    }
-
+    /* checkea si la posicion de la ficha coincide con una insert position
+    si es asi inserta la coin en esa columna
+    */ 
     resolveMove(coin) {
         let position = this.getInsertPosition(coin);
         if (position === null) {
@@ -93,10 +83,34 @@ class Board {
         }
     }
 
+    /*
+    */
+    insertInBoard(x, coin) {                
+        let square = new Square();
+        for (let y = 0; y < this.cantTableroY; y++) {
+            square = this.board[x][y];
+            if (square.getColour() !== false) {
+                if (y - 1 < 0) {
+                    return
+                } else {
+                    square = this.board[x][y - 1];
+                    square.setColour(coin.getColour());
+                    return;
+                }
+            } else {
+                if (y === this.cantTableroY - 1) {
+                    square = this.board[x][y];
+                    square.setColour(coin.getColour());
+                    return;
+                }
+            }
+        }
+    }
+
     checkPlay(colour) {
         let square = new Square();
-        for (let x = this.cantTablero - 1; x > -1; x--) {
-            for (let y = 0; y < this.cantTablero; y++) {
+        for (let x = this.cantTableroX - 1; x > -1; x--) {
+            for (let y = 0; y < this.cantTableroY; y++) {
                 let counter = 0;
                 square = this.board[x][y];
                 if (square.getColour() === colour) {

@@ -6,6 +6,7 @@ class Player {
         this.posX = 0;
         this.context = context;
         this.turn = false;
+        this.name = "";
     }
 
     createCoins(cantEnLinea){
@@ -61,6 +62,14 @@ class Player {
 
     setPosX(x){
         this.posX = x;
+    }
+
+    setName(name){
+        this.name = name;
+    }
+
+    getName(){
+        return this.name;
     }
 
 }

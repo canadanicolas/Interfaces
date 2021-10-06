@@ -28,22 +28,25 @@ function start() {
 
     if (coloursSelected == false){
         gameStarted = true;
+
         cantEnLinea = document.querySelector("#selectXenLinea option:checked").value;
 
+        player1.setName(document.querySelector("nameP1"));
+        player2.setName(document.querySelector("nameP2"));
+        console.log(document.querySelector("nameP1"));
+        console.log(document.querySelector("nameP2"));
+
         board.createBoard(cantEnLinea);
+
         player1.createCoins(cantEnLinea);
         player2.createCoins(cantEnLinea); 
 
-        document.querySelector("#buttonStart").className = "hidden";
+        document.querySelector("#hideInGame").className = "hidden";
+        document.querySelector("#buttonStart").className = "hidden";  
         document.querySelector("#buttonRestart").className = "";
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
-        document.querySelector("#labelColour1").className = "hidden";
-        document.querySelector("#selectColour1").className = "hidden";
-        document.querySelector("#labelColour2").className = "hidden";
-        document.querySelector("#selectColour2").className = "hidden";
-        document.querySelector("#selectXenLinea").className = "hidden";
-        document.querySelector("#labelXenLinea").className = "hidden";
+
         turn = player1;
     }
 }
@@ -64,19 +67,14 @@ document.querySelector("#buttonRestart").addEventListener("click", restart);
 function restart() {
     gameStarted = false;
     clearCanvas();
+
     document.querySelector("#buttonStart").className = "";
     document.querySelector("#buttonRestart").className = "hidden";
-    document.querySelector("#labelColour1").className = "";
-    document.querySelector("#selectColour1").className = "";
-    document.querySelector("#labelColour2").className = "";
-    document.querySelector("#selectColour2").className = "";
-    document.querySelector("#selectXenLinea").className = "";
-    document.querySelector("#labelXenLinea").className = "";
+    document.querySelector("#hideInGame").className = "";
     document.querySelector("#turnPlayer1").className = "hidden";
     document.querySelector("#turnPlayer2").className = "hidden";
     document.querySelector("#canvas").className = "canva";
-    document.querySelector("#player1WinMessage").className = "hidden";
-    document.querySelector("#player2WinMessage").className = "hidden";
+    document.querySelector("#playerWinMessageContainer").className = "hidden";
 }
 
 function drawCanvas() { //va mostrando y dibujando el tablero ingame
@@ -128,11 +126,13 @@ canvas.addEventListener('mouseup', function () {
             if (play === true) {
                 document.querySelector("#canvas").className = "hidden";
                 if (lastClickedFigure.getPlayer() === "1") {
-                    document.querySelector("#player1WinMessage").className = "";
+                    document.querySelector("#playerWinMessageContainer").className = "";
+                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player1.getName();
                     document.querySelector("#turnPlayer1").className = "hidden";
                     document.querySelector("#turnPlayer2").className = "hidden";  
                 } else {
-                    document.querySelector("#player2WinMessage").className = "";
+                    document.querySelector("#playerWinMessageContainer").className = "";
+                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player2.getName();
                     document.querySelector("#turnPlayer1").className = "hidden";
                     document.querySelector("#turnPlayer2").className = "hidden"; 
                 }
