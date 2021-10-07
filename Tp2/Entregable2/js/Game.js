@@ -46,7 +46,9 @@ function start() {
         document.querySelector("#buttonStart").className = "hidden";  
         document.querySelector("#buttonRestart").className = "";
         document.querySelector("#turnPlayer1").className = "";
+        document.querySelector("#turnPlayer1").innerHTML = "Turno de " + player1.getName();
         document.querySelector("#turnPlayer2").className = "hidden";
+        document.querySelector("#turnPlayer2").innerHTML = "Turno de " + player2.getName();
 
         changeTurn();
         gameTimer();
