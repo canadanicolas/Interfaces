@@ -23,7 +23,13 @@ let cantEnLinea = 0;
 let playerTime = 0;
 let gameTime = 0;
 
+let colourP1 = 0;
+let colourP2 = 0;
+
 clearCanvas();
+
+/*---------------------------------------------- ------------- ----------------------------------------------*/
+/*---------------------------------------------- Start y Reset ----------------------------------------------*/
 
 document.querySelector("#buttonStart").addEventListener("click", start);
 function start() {
@@ -49,6 +55,7 @@ function start() {
         document.querySelector("#turnPlayer1").innerHTML = "Turno de " + player1.getName();
         document.querySelector("#turnPlayer2").className = "hidden";
         document.querySelector("#turnPlayer2").innerHTML = "Turno de " + player2.getName();
+        document.querySelector("#playerTimer").className = "";
 
         changeTurn();
         gameTimer();
@@ -56,20 +63,24 @@ function start() {
 }
 
 function areColoursDuplicated(){
-    let colourP1 = document.querySelector("#selectColour1 option:checked").value;
-    let colourP2 = document.querySelector("#selectColour2 option:checked").value;
+    colourP1 = document.querySelector("#selectColour1 option:checked").value;
+    colourP2 = document.querySelector("#selectColour2 option:checked").value;
     if (colourP1 == colourP2) {
         document.querySelector("#errorColoresSeleccionados").className = "";
         return true;
     }
     else 
     document.querySelector("#errorColoresSeleccionados").className = "hidden";
+    console.log(colourP1);
+    console.log(colourP2);
     return false;
 }
 
 document.querySelector("#buttonRestart").addEventListener("click", restart);
 function restart() {
     gameStarted = false;
+    clearInterval(gameTime);
+    clearInterval(playerTime);
     clearCanvas();
 
     document.querySelector("#buttonStart").className = "";
@@ -105,6 +116,9 @@ function clearCanvas() {
     context.fill();
 }
 
+/*---------------------------------------------- ------------- ----------------------------------------------*/
+/*---------------------------------------------- Drag and Drop ----------------------------------------------*/
+
 canvas.addEventListener('mousedown', function () {              
     isMouseDown = true;
     let clickedFigure = findClickedFigure(event.layerX, event.layerY);
@@ -136,9 +150,15 @@ canvas.addEventListener('mouseup', function () {
                 clearInterval(gameTime);
                 clearInterval(playerTime);
                 if (lastClickedFigure.getPlayer() === "1") {
-                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player1.getName();  
+                    colourP1 = playerColourToColourString(colourP1);
+                    document.querySelector("#playerWinMessage").innerHTML = player1.getName() + " Won " +
+                    " with the colour " + colourP1;
+                    document.querySelector("#playerWinMessage").style.color= colourP1; 
                 } else {
-                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player2.getName();
+                    colourP2 = playerColourToColourString(colourP2);
+                    document.querySelector("#playerWinMessage").innerHTML = player2.getName() + " Won " +
+                    " with the colour " + colourP2;
+                    document.querySelector("#playerWinMessage").style.color= colourP2;  
                 }
             }
         } else {
@@ -173,6 +193,9 @@ function findClickedFigure(posX, posY) {
     }
 }
 
+/*---------------------------------------------- ------------ ----------------------------------------------*/
+/*---------------------------------------------- Funcionality ----------------------------------------------*/
+
 function deleteCoin(lastClickedFigure) {
     if (turn === player1) {
         for (let i = 0; i < coinsPlayer1.length; i++) {
@@ -203,19 +226,40 @@ function changeTurn(action) {
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
     }
-    
     if (action == "clicked"){
         clearInterval(playerTime);
     }
     playerTimer(turn);
 }
 
+
+function playerColourToColourString(s){
+    let string = s;
+    string = Array.from(string);
+    let colourLength = string.length - 4;
+    for (let i = 0; i < string.length; i++){
+        if (i == 0) {
+            string.shift();
+        }
+        if (i >= colourLength -1) {
+            string.splice(i, 1);
+            i--;
+        }
+    }
+    string = string.toString();
+    string = string.replace(/,/g, "");
+    return string
+}
+
+/*---------------------------------------------- ------ ----------------------------------------------*/
+/*---------------------------------------------- Timers ----------------------------------------------*/
+
 function playerTimer(player){
     let s = 0;
     playerTime = setInterval(function() {
         if (s < 9) {
-            document.querySelector("#playerTimer").innerHTML = "Time left for " + player.getName() + " - " + (9 - s) + " seconds";
-            console.log(turn.getName());
+            document.querySelector("#playerTimer").innerHTML = "Time left for " +
+             player.getName() + " - " + (9 - s) + " seconds";
         s++;
         } else {
             clearInterval(playerTime);
@@ -250,5 +294,5 @@ function gameTimerEnded() {
     document.querySelector("#turnPlayer2").className = "hidden"; 
 }
 
-
-
+/*----------------------------------------------  ----------------------------------------------*/
+/*----------------------------------------------  ----------------------------------------------*/
