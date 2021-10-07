@@ -12,7 +12,10 @@
 }
 
 h2 {
-    font-weight: bold;
+    color: #ff09ad;
+	font: 72px 'Sansita One';
+	text-align: center;
+	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
 }
 
 .container  {
@@ -46,4 +49,8 @@ select {
 
 #playerWinMessageContainer{ 
     height: 1000px;
+}
+
+h3, label{
+    font-family: sans-serif;
 }

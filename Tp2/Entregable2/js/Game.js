@@ -50,7 +50,7 @@ function start() {
 
         document.querySelector("#hideInGame").className = "hidden";
         document.querySelector("#buttonStart").className = "hidden";  
-        document.querySelector("#buttonRestart").className = "";
+        document.querySelector("#buttonRestart").className = "btn btn-dark";
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer1").innerHTML = "Turno de " + player1.getName();
         document.querySelector("#turnPlayer2").className = "hidden";
@@ -71,8 +71,6 @@ function areColoursDuplicated(){
     }
     else 
     document.querySelector("#errorColoresSeleccionados").className = "hidden";
-    console.log(colourP1);
-    console.log(colourP2);
     return false;
 }
 
@@ -83,11 +81,12 @@ function restart() {
     clearInterval(playerTime);
     clearCanvas();
 
-    document.querySelector("#buttonStart").className = "";
+    document.querySelector("#buttonStart").className = "btn btn-dark";
     document.querySelector("#buttonRestart").className = "hidden";
     document.querySelector("#hideInGame").className = "";
     document.querySelector("#turnPlayer1").className = "hidden";
     document.querySelector("#turnPlayer2").className = "hidden";
+    document.querySelector("#playerTimer").className = "hidden";
     document.querySelector("#canvas").className = "canva";
     document.querySelector("#playerWinMessageContainer").className = "hidden";
 }
