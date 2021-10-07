@@ -254,12 +254,21 @@ function playerColourToColourString(s){
 /*---------------------------------------------- Timers ----------------------------------------------*/
 
 function playerTimer(player){
-    let s = 0;
+    let s = 10;
+    document.querySelector("#playerTimer").innerHTML = "Time left for " +
+             player.getName() + " - " + (s) + " seconds";
+    document.querySelector("#playerTimer").style.color="#000000";
     playerTime = setInterval(function() {
-        if (s < 9) {
+        if (s > 0) {
             document.querySelector("#playerTimer").innerHTML = "Time left for " +
-             player.getName() + " - " + (9 - s) + " seconds";
-        s++;
+             player.getName() + " - " + (s-1) + " seconds";
+             if (s >= 5) {
+                document.querySelector("#playerTimer").style.color="#000000";
+            }
+            if (s < 5) {
+                document.querySelector("#playerTimer").style.color="#FF0000";
+            }
+        s--;
         } else {
             clearInterval(playerTime);
             changeTurn();
