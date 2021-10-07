@@ -203,13 +203,18 @@ function changeTurn(action) {
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
     }
-    let s = 0;
+    
     if (action == "clicked"){
         clearInterval(playerTime);
     }
+    playerTimer(turn);
+}
+
+function playerTimer(player){
+    let s = 0;
     playerTime = setInterval(function() {
         if (s < 9) {
-            document.querySelector("#playerTimer").innerHTML = "Time left for " + turn.getName() + " - " + (9 - s) + " seconds";
+            document.querySelector("#playerTimer").innerHTML = "Time left for " + player.getName() + " - " + (9 - s) + " seconds";
             console.log(turn.getName());
         s++;
         } else {
@@ -217,7 +222,6 @@ function changeTurn(action) {
             changeTurn();
         }
     }, 1000);
-
 }
 
 function gameTimer() {
