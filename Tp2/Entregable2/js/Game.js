@@ -14,11 +14,14 @@ let lastClickedFigure = null;
 let oldPosition = 0;
 let posicionFichasY = 800;
 
-let turn = player1;
+let turn = player2;
 
 let gameStarted = false;
 
 let cantEnLinea = 0;
+
+let playerTime = 0;
+let gameTime = 0;
 
 clearCanvas();
 
@@ -33,8 +36,6 @@ function start() {
 
         player1.setName(document.querySelector("#nameP1").value);
         player2.setName(document.querySelector("#nameP2").value);
-        console.log(document.querySelector("#nameP1").value);
-        console.log(document.querySelector("#nameP2").value);
 
         board.createBoard(cantEnLinea);
 
@@ -47,7 +48,8 @@ function start() {
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
 
-        turn = player1;
+        changeTurn();
+        gameTimer();
     }
 }
 
@@ -121,20 +123,20 @@ canvas.addEventListener('mouseup', function () {
         let outcome = board.resolveMove(lastClickedFigure);
         if (outcome === true) {
             deleteCoin(lastClickedFigure);
-            changeTurn(lastClickedFigure.getPlayer());
+            changeTurn("clicked");
             let play = board.checkPlay(lastClickedFigure.getColour());
             if (play === true) {
                 document.querySelector("#canvas").className = "hidden";
+                document.querySelector("#turnPlayer1").className = "hidden";
+                document.querySelector("#turnPlayer2").className = "hidden";
+                document.querySelector("#playerWinMessageContainer").className = "";
+                document.querySelector("#playerTimer").className = "hidden";
+                clearInterval(gameTime);
+                clearInterval(playerTime);
                 if (lastClickedFigure.getPlayer() === "1") {
-                    document.querySelector("#playerWinMessageContainer").className = "";
-                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player1.getName();
-                    document.querySelector("#turnPlayer1").className = "hidden";
-                    document.querySelector("#turnPlayer2").className = "hidden";  
+                    document.querySelector("#playerWinMessage").innerHTML = "Gano " + player1.getName();  
                 } else {
-                    document.querySelector("#playerWinMessageContainer").className = "";
                     document.querySelector("#playerWinMessage").innerHTML = "Gano " + player2.getName();
-                    document.querySelector("#turnPlayer1").className = "hidden";
-                    document.querySelector("#turnPlayer2").className = "hidden"; 
                 }
             }
         } else {
@@ -189,7 +191,7 @@ function deleteCoin(lastClickedFigure) {
     }
 }
 
-function changeTurn() {
+function changeTurn(action) {
     if (turn === player1) {
         turn = player2;
         document.querySelector("#turnPlayer1").className = "hidden";
@@ -199,8 +201,48 @@ function changeTurn() {
         document.querySelector("#turnPlayer1").className = "";
         document.querySelector("#turnPlayer2").className = "hidden";
     }
+    let s = 0;
+    if (action == "clicked"){
+        clearInterval(playerTime);
+    }
+    playerTime = setInterval(function() {
+        if (s < 9) {
+            document.querySelector("#playerTimer").innerHTML = "Time left for " + turn.getName() + " - " + (9 - s) + " seconds";
+            console.log(turn.getName());
+        s++;
+        } else {
+            clearInterval(playerTime);
+            changeTurn();
+        }
+    }, 1000);
+
 }
 
+function gameTimer() {
+    let s = 0;
+    let m = 0;
+    gameTime = setInterval(function() {
+        if ((s <= 40) || (m < 3)) {
+            if (s > 59){
+                s = 0;
+                m++;
+            }
+            document.querySelector("#gameTimer").innerHTML = "Game Timer: " + m + ":" + s;
+          s++;
+        } else {
+            gameTimerEnded();
+        }
+    }, 1000);
+}
+
+function gameTimerEnded() {
+    clearInterval(playerTime);
+    document.querySelector("#canvas").className = "hidden";
+    document.querySelector("#playerWinMessageContainer").className = "";
+    document.querySelector("#playerWinMessage").innerHTML = "Se termino el tiempo, hubo un empate";
+    document.querySelector("#turnPlayer1").className = "hidden";
+    document.querySelector("#turnPlayer2").className = "hidden"; 
+}
 
 
 
