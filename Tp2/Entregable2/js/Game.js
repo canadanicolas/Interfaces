@@ -133,6 +133,17 @@ canvas.addEventListener('mousedown', function () {
     })
 })
 
+canvas.addEventListener('mouseout', function () {
+    if (lastClickedFigure != null) {
+        lastClickedFigure.setPosition(oldPosition.x, oldPosition.y);
+        lastClickedFigure = null;
+        clickedFigure = null;
+        isMouseDown = false;
+        drawCanvas();
+    }
+    
+})  
+
 canvas.addEventListener('mouseup', function () {          
     if (lastClickedFigure != null) {
         let outcome = board.resolveMove(lastClickedFigure);
@@ -161,6 +172,7 @@ canvas.addEventListener('mouseup', function () {
                 }
             }
         } else {
+            console.log("ASDa");
             lastClickedFigure.setPosition(oldPosition.x, oldPosition.y);
         }
     }
