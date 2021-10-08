@@ -205,7 +205,6 @@ function findClickedFigure(posX, posY) {
 
 /*---------------------------------------------- ------------ ----------------------------------------------*/
 /*---------------------------------------------- Funcionality ----------------------------------------------*/
-
 function deleteCoin(lastClickedFigure) {
     if (turn === player1) {
         for (let i = 0; i < coinsPlayer1.length; i++) {
