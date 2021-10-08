@@ -172,7 +172,6 @@ canvas.addEventListener('mouseup', function () {
                 }
             }
         } else {
-            console.log("ASDa");
             lastClickedFigure.setPosition(oldPosition.x, oldPosition.y);
         }
     }
