@@ -121,23 +121,18 @@ class Board {
                     if (counter === this.cantEnLinea) {
                         return true;
                     }
-                    counter = this.checkLeft(colour, x, y);
-                    
+
+                    counter = this.checkHorizontal(colour, x, y);
                     if (counter === this.cantEnLinea) {
                         return true;
                     }
-                    counter = this.checkRight(colour, x, y);
-                    
-                    if (counter === this.cantEnLinea) {
-                        return true;
-                    }
+
                     counter = this.checkLeftDiagonal(colour, x, y);
-                    
                     if (counter === this.cantEnLinea) {
                         return true;
                     }
+
                     counter = this.checkRigthDiagonal(colour, x, y);
-                    
                     if (counter === this.cantEnLinea) {
                         return true;
                     }
@@ -162,7 +157,7 @@ class Board {
         }
     }
 
-    checkLeft(colour, x, y) {
+    checkHorizontal(colour, x, y) {
         let counter = 0;
         while (counter <= this.cantEnLinea && x >= 0) {
             let square = this.board[x][y];
@@ -178,25 +173,6 @@ class Board {
         }
         
     }
-
-    checkRight(colour, x, y) {
-        let counter = 0;
-        while (counter <= this.cantEnLinea && x < this.i) {
-            let square = this.board[x][y];
-            if (square.getColour() === colour) {
-                counter++;
-                x++;
-            } else {
-                return 0;
-            }
-            if (counter === this.cantEnLinea) {
-                return counter;
-            }
-        }
-        
-    }
-
-
 
     checkLeftDiagonal(colour, x, y) {
         let counter = 0;
@@ -219,8 +195,7 @@ class Board {
 
     checkRigthDiagonal(colour, x, y) {
         let counter = 0;
-        while (counter <= this.cantEnLinea && x < this.cantTablero && y >= 0) {
-
+        while (counter <= this.cantEnLinea && x < this.cantTableroX && y >= 0) {
             let square = this.board[x][y];
             if (square.getColour() === colour) {
                 counter++;
@@ -233,8 +208,8 @@ class Board {
                 return counter;
             }
         }
-        
     }
+
 }
 
 
