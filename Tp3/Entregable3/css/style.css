@@ -24,13 +24,13 @@
     position: absolute;
     left: 0;
     top: 176px;
-    background: url('../images/MarioAndLuigi.png') left center;
-    animation: walk 0.5s steps(3) infinite;
+    background: url('../images/marioSheet.png') left center;
+    animation: walk 0.45s steps(3) infinite;
 }
 
 @keyframes walk {
-    0% { background-position: -43px -26px;}
-    100% {background-position: -94px -26px;}
+    0% { background-position: -239px -52px;}
+    100% {background-position: -327px -52px;}
 }
 
 .playerJump{
@@ -39,11 +39,26 @@
     position: absolute;
     left: 0;
     top: 140px;
-    background: url('../images/MarioAndLuigi.png') left center;
-    animation: jump 1s steps(6) infinite;
+    background: url('../images/marioSheet.png') left center;
+    animation: jump 2s steps(1) infinite;
 }
 
 @keyframes jump {
-    0% { background-position: -140px -26px;}
-    100% {background-position: -242px -26px;}
+    0% { background-position: -359px -52px;}
+    100% {background-position: -375px -52px;}
+}
+
+.player2{
+    width: 16px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 176px;
+    background: url('../images/marioSheet.png') left center;
+    animation: walk2 0.6s steps(3) infinite;
+}
+
+@keyframes walk2 {
+    0% { background-position: -237px -122px;}
+    100% {background-position: -312px -122px;}
 }
