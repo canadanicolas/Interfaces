@@ -1,10 +1,11 @@
 
+
 .background{
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
-    width: 255px;
-    height: 240px;
+    width: 1024px;
+    height: 960px;
     animation: backgroundMove 7s linear infinite;
 }
 
@@ -13,45 +14,47 @@
         background-position: 0px 0px;
     }
     to {
-        background-position: -256px 0px;
+        background-position: -1024px 0px;
     }
 }
     
 .player{
-    width: 16px;
-    height: 32px;
+    border: 3px solid black;
+    width: 64px;
+    height: 128px;
     position: absolute;
-    left: 0;
-    top: 176px;
+    left: 60px;
+    top: 704px;
     background: url('../images/marioSheet.png') left center;
     animation: walk 0.75s steps(3) infinite;
 }
 
 @keyframes walk {
-    0% { background-position: -239px -52px;}
-    100% {background-position: -332px -52px;}
+    0% { background-position: -956px -208px;}
+    100% {background-position: -1328px -208px;}
 }
 
 .playerJump{
-    width: 16px;
-    height: 32px;
+    border: 3px solid black;
+    width: 64px;
+    height: 128px;
     position: absolute;
-    left: 0;
-    top: 176px;
+    left: 68px;
+    top: 704px;
     background: url('../images/marioSheet.png') left center;
     animation: jump 1.4s steps(7);
 }
 
 @keyframes jump {
-    0% {background-position: -359px -52px;}
-    12.5% {top:161px; background-position: -359px -52px;}
-    25% {top:146px; background-position: -359px -52px;}
-    37.5% {top:131px; background-position: -359px -52px;}
-    50% {top:116px; background-position: -359px -52px;}
-    62.5% {top:131px; background-position: -359px -52px;}
-    75% {top:146px; background-position: -359px -52px;}
-    87.5% {top:161px; background-position: -359px -52px;}
-    100% {background-position: -359px -52px;}
+    0% {background-position: -1436px -208px;}
+    12.5% {top:644px; background-position: -1436px -208px;}
+    25% {top:584px; background-position: -1436px -208px;}
+    37.5% {top:524px; background-position: -1436px -208px;}
+    50% {top:464px; background-position: -1436px -208px;}
+    62.5% {top:524px; background-position: -1436px -208px;}
+    75% {top:584px; background-position: -1436px -208px;}
+    87.5% {top:644px; background-position: -1436px -208px;}
+    100% {background-position: -1436px -208px;}
 }
 
 .player2{
@@ -70,16 +73,37 @@
 }
 
 .enemies{
-    width: 16px;
-    height: 20px;
+    border: 3px solid black;
+    width: 64px;
+    height: 80px;
     position: absolute;
     right: 0;
-    top: 191px;
+    top: 764px;
     background: url('../images/enemies.png') left center;
     animation: enemyWalk 0.6s steps(2) infinite;
 }
 
+.hidden{
+    display: none;
+}
+
 @keyframes enemyWalk {
-    0% { background-position: -90px -152px;}
-    100% {background-position: -146px -152px;}
+    0% { background-position: -360px -608px;}
+    100% {background-position: -596px -608px;}
+}
+
+.coin{
+    border: 3px solid black;
+    width: 64px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    top: 500px;
+    background: url('../images/items.png') left center;
+    animation: coinMove 0.6s steps(4) infinite;
+}
+
+@keyframes coinMove {
+    0% { background-position: -512px -378px;}
+    100% {background-position: -980px -378px;}
 }
