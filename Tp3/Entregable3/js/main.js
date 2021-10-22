@@ -1,3 +1,16 @@
+document.querySelector("#playButton").addEventListener('click', play);
+
+function play(){
+    enemyMovement();
+    enemyCollision();
+    playerRun();
+    coinMovement();
+    backgroundMove();
+}
+
+function backgroundMove() {
+    document.getElementById("background").className = "backgroundMove";
+}
 /* ----------------------------------- Player -----------------------------------*/
 
 let player = document.getElementById("player");
@@ -13,13 +26,12 @@ function jump(event) {
 
 function playerRun() {
     console.log(player.className);
-    player.className = "player";
+    player.className = "playerRun";
 }
 
 /* ----------------------------------- Enemy -----------------------------------*/
 
 let enemies = document.getElementById("enemies");
-document.querySelector("#playButton").addEventListener('click', enemyMovement);
 function enemyMovement() {
     enemies.className = "enemies";
     let value = 1084;
@@ -34,7 +46,6 @@ function enemyMovement() {
 
 }
 
-document.querySelector("#playButton").addEventListener('click', enemyCollision);
 function enemyCollision(){
     setInterval(function(){  
         let enemyPosition = enemies.getBoundingClientRect();
@@ -51,7 +62,6 @@ function enemyCollision(){
 /* ----------------------------------- Coin -----------------------------------*/
 
 let coin = document.getElementById("coin");
-document.querySelector("#playButton").addEventListener('click', coinMovement);
 function coinMovement() {
     coin.className = "coin";
     let value = 1084;

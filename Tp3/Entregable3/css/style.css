@@ -1,6 +1,12 @@
-
-
 .background{
+    position: absolute;
+    background-attachment: fixed;
+    background:  url("../images/background.png") repeat;
+    width: 1024px;
+    height: 960px;
+}
+
+.backgroundMove{
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
@@ -17,8 +23,24 @@
         background-position: -1024px 0px;
     }
 }
+
+.playerIdle{
+    border: 3px solid black;
+    width: 64px;
+    height: 128px;
+    position: absolute;
+    left: 60px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    animation: idle 1s steps(2) infinite;
+}
+
+@keyframes idle {
+    0% { background-position: -721px -208px;}
+    100% {background-position: -953px -208px;}
+}
     
-.player{
+.playerRun{
     border: 3px solid black;
     width: 64px;
     height: 128px;
@@ -93,7 +115,6 @@
 }
 
 .coin{
-    border: 3px solid black;
     width: 64px;
     height: 80px;
     position: absolute;
