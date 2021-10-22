@@ -1,3 +1,17 @@
+*{
+    background-image: url("../images/webBackground.jpg");
+}
+
+button {
+    background-image: none;
+    background-color: aquamarine;
+}
+.game{
+    display: flex;
+    justify-content: center;
+    
+}
+
 .background{
     position: absolute;
     background-attachment: fixed;

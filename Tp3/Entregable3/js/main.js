@@ -6,11 +6,13 @@ function play(){
     playerRun();
     coinMovement();
     backgroundMove();
+    coinCollision();
 }
 
 function backgroundMove() {
     document.getElementById("background").className = "backgroundMove";
 }
+
 /* ----------------------------------- Player -----------------------------------*/
 
 let player = document.getElementById("player");
@@ -55,7 +57,7 @@ function enemyCollision(){
         if((value2>-64 && value2<64) && (value3>-128 && value3<128)){
             console.log("lose");
         }
-    ;}, 100);
+    ;}, 200);
   
 }
 
@@ -74,4 +76,17 @@ function coinMovement() {
         coin.style.left = coinMove;
     }, 1084 / 60);
 
+}
+
+function coinCollision(){
+    setInterval(function(){  
+        let coinPosition = coin.getBoundingClientRect();
+        let playerPosition = player.getBoundingClientRect();
+        let value2 = playerPosition.right - coinPosition.right;
+        let value3 = playerPosition.top - coinPosition.top; 
+        if((value2>-64 && value2<64) && (value3>-40 && value3<40)){
+            console.log("coin");
+        }
+    ;}, 200);
+  
 }
