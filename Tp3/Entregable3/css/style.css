@@ -1,10 +1,9 @@
-*{
+body{
     background-image: url("../images/webBackground.jpg");
 }
 
 button {
     background-image: none;
-    background-color: aquamarine;
 }
 .game{
     display: flex;
@@ -13,6 +12,7 @@ button {
 }
 
 .background{
+    border: 7px solid black;
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
