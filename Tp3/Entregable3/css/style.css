@@ -32,3 +32,18 @@
     0% { background-position: -43px -26px;}
     100% {background-position: -94px -26px;}
 }
+
+.playerJump{
+    width: 16px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 140px;
+    background: url('../images/MarioAndLuigi.png') left center;
+    animation: jump 1s steps(6) infinite;
+}
+
+@keyframes jump {
+    0% { background-position: -140px -26px;}
+    100% {background-position: -242px -26px;}
+}
