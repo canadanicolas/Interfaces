@@ -17,7 +17,6 @@
     }
 }
     
-
 .player{
     width: 16px;
     height: 32px;
@@ -25,12 +24,12 @@
     left: 0;
     top: 176px;
     background: url('../images/marioSheet.png') left center;
-    animation: walk 0.45s steps(3) infinite;
+    animation: walk 0.75s steps(3) infinite;
 }
 
 @keyframes walk {
     0% { background-position: -239px -52px;}
-    100% {background-position: -327px -52px;}
+    100% {background-position: -332px -52px;}
 }
 
 .playerJump{
@@ -38,14 +37,21 @@
     height: 32px;
     position: absolute;
     left: 0;
-    top: 140px;
+    top: 176px;
     background: url('../images/marioSheet.png') left center;
-    animation: jump 2s steps(1) infinite;
+    animation: jump 1.4s steps(7);
 }
 
 @keyframes jump {
-    0% { background-position: -359px -52px;}
-    100% {background-position: -375px -52px;}
+    0% {background-position: -359px -52px;}
+    12.5% {top:161px; background-position: -359px -52px;}
+    25% {top:146px; background-position: -359px -52px;}
+    37.5% {top:131px; background-position: -359px -52px;}
+    50% {top:116px; background-position: -359px -52px;}
+    62.5% {top:131px; background-position: -359px -52px;}
+    75% {top:146px; background-position: -359px -52px;}
+    87.5% {top:161px; background-position: -359px -52px;}
+    100% {background-position: -359px -52px;}
 }
 
 .player2{
@@ -61,4 +67,19 @@
 @keyframes walk2 {
     0% { background-position: -237px -122px;}
     100% {background-position: -312px -122px;}
+}
+
+.enemies{
+    width: 16px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 191px;
+    background: url('../images/enemies.png') left center;
+    animation: enemyWalk 0.6s steps(2) infinite;
+}
+
+@keyframes enemyWalk {
+    0% { background-position: -90px -152px;}
+    100% {background-position: -146px -152px;}
 }

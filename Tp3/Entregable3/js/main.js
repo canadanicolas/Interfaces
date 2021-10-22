@@ -1,24 +1,17 @@
-document.querySelector("#playButton").addEventListener("click", function () {
-    let sky = document.getElementById("sky").style.WebkitAnimationPlayState = "running";
-    //let player = document.getElementById("player").style.WebkitAnimationPlayState = "running";
-    //game();
-});
-
-function game(){
-
-}
 
 let player = document.getElementById("player");
-document.addEventListener('keydown', keyCode);
+document.addEventListener('keydown', jump);
 
-function keyCode(event) {
+function jump(event) {
     var x = event.keyCode;
     if (x == 87) {
-        player.className = "playerJump";
-        player.addEventListener("animationend", playerJump());
+        player.className = "playerJump"
+        player.addEventListener("animationend", playerRun);
     }
 }
 
-function playerJump(){
-    player.className = "playerJump";
+function playerRun(){
+    console.log(player.className);
+    player.className = "player";
 }
+
