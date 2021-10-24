@@ -33,6 +33,14 @@ p{
     display: flex;
     justify-content: center;
 }
+
+#instructions{
+    text-align: center;
+    border: 10px ridge brown;
+    margin: 10px;
+    background-color: salmon;
+    font: 20px 'Impact';
+}
 /*---------------------------------------- Background ----------------------------------------*/
 
 .background{
