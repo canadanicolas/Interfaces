@@ -13,7 +13,9 @@
         <div class="game" id="game">
             <div class="background" id="background">
                 <div class="playerIdle" id="player"></div>
-                <div class="resetButtonDiv"><button type="button" id="resetButton">RESTART</button></div>
+                <div class="resetButtonDiv">
+                    <button type="button" class="hidden" id="resetButton">RESTART</button>
+                </div>
                 <div class="scoreboard"><p id="scoreboard"></p></div>
                 <div class="liveCounter"><p id="livesCounter"></p></div>  
                 <div class="playButtonDiv">
@@ -25,7 +27,9 @@
                     <h3>-You start with 3 lives, each time you hit an enemy you lose 1.</h3>
                     <h3>-Each coin equals 10 points, get as many as you can.</h3>
                     <h3>-For every 10 coins you get an extra life!</h3>
-                    
+                </div>
+                <div id="endScreen">
+                    <h1 id="endScreenText"></h1>
                 </div>
                 <div class="hidden" id="enemies"></div>
                 <div class="hidden" id="coin"></div>

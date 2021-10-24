@@ -1,15 +1,13 @@
 /* ----------------------------------- Game -----------------------------------*/
 let gameEnded = false;
-document.querySelector("#playButton").addEventListener('click', play);
-
 let scoreboard = document.getElementById("scoreboard");
 let score = 0;
 let livesCounter = document.getElementById("livesCounter");
 let lives = 2;
 let finalScore = document.getElementById("finalScore");
 
-document.querySelector("#instructionsButton").addEventListener('click', showInstructions);
-
+document.querySelector("#playButton").addEventListener('click', play);
+//Arranca el juego
 function play(){
     gameEnded = false;
     lives = 2;
@@ -17,8 +15,11 @@ function play(){
     enemies.className = "enemies";
     coin.className = "coin";
     document.querySelector("#playButton").className="hidden";
+    document.querySelector("#resetButton").className="";
     document.querySelector("#instructionsButton").className="hidden";
     document.getElementById("instructions").className = "hidden";
+    document.getElementById("endScreen").className = "hidden";
+    document.getElementById("endScreenText").innerHTML = "";
     playerRun();
     liveCounter();
     scoreCounter();
@@ -29,6 +30,7 @@ function play(){
     coinCollision();
 }
 
+//Le da movimiento al fondo
 function backgroundMove() {
     document.getElementById("background").className = "backgroundMove";
 }
@@ -51,6 +53,8 @@ function scoreCounter(){
     scoreboard.innerHTML = "SCORE: " +score;
 }
 
+document.querySelector("#instructionsButton").addEventListener('click', showInstructions);
+//Togglea las instrucciones
 function showInstructions(){
     if (document.getElementById("instructions").className == "hidden"){
         document.getElementById("instructions").className = "instructions";
@@ -60,6 +64,7 @@ function showInstructions(){
     
 }
 
+//Termina el juego
 function endGame(){
     gameEnded = true;
     clearInterval(intervalCoin);
@@ -69,7 +74,9 @@ function endGame(){
     enemies.className = "hidden";
     coin.className = "hidden";
     document.querySelector("#playButton").className="";
+    document.querySelector("#resetButton").className="hidden";
     document.querySelector("#instructionsButton").className="";
+    document.getElementById("endScreenText").innerHTML = "YOUR FINAL SCORE IS: " + score;
 }
 
 document.querySelector("#resetButton").addEventListener('click', restartGame);
@@ -100,22 +107,22 @@ function playerRun() {
 let intervalEnemies;
 let enemySpeed = 10;
 let enemies = document.getElementById("enemies");
+
 //setea un intervalo de movimiento de los enemigos de tierra, su velocidad de forma random y un spawn time random
 function enemyMovement() {
-    let value = 1084;
+    let enemyValue = 1084;
     enemies.className = "enemies";
     intervalEnemies = setInterval(function () {
-        if (value < 0) {
-            console.log("asd");
+        if (enemyValue < 0) {
             enemies.className = "hidden";
             clearInterval(intervalEnemies);
             setTimeout( () => { 
-                enemySpeed =  ((Math.random() * 10) + 5); //random enemy speed in between 5 and 20px
+                enemySpeed =  ((Math.random() * 10) + 5); //random enemy speed in between 5 and 15px
                 enemyMovement();
             }, Math.floor(Math.random() * 2000)); //new enemy in between 0 and 2 seconds
         }
-        value -= enemySpeed;
-        let enemyMove = value.toString().concat("px");
+        enemyValue -= enemySpeed;
+        let enemyMove = enemyValue.toString().concat("px");
         enemies.style.left = enemyMove;
         if(gameEnded){
             clearInterval(intervalEnemies);
@@ -148,6 +155,7 @@ function enemyCollision(){
 let intervalCoin;
 let coin = document.getElementById("coin");
 let coinSpeed = 12;
+
 //setea un intervalo de movimiento de las monedas y una velocidad random
 function coinMovement() {
     let coinValue = 1024;

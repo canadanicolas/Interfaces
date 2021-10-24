@@ -1,3 +1,7 @@
+.hidden{
+    display: none;
+}
+
 body{
     background-image: url("../images/webBackground.jpg");
 }
@@ -6,7 +10,8 @@ button {
     border: 10px ridge brown;
     margin: 10px;
     background-color: salmon;
-    font: 36px 'Impact';
+    font: 36px 'Courier';
+    font-weight: bold;
 }
 .game{
     display: flex;
@@ -25,8 +30,9 @@ button {
 
 p{
     color: salmon;
-	font: 36px 'Impact';
+	font: 36px 'Courier';
 	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+    font-weight: bold;
 }
 
 .playButtonDiv{
@@ -39,7 +45,19 @@ p{
     border: 10px ridge brown;
     margin: 10px;
     background-color: salmon;
-    font: 20px 'Impact';
+    font: 20px 'Courier';
+}
+
+#endScreen{
+    display: flex;
+    justify-content: center;  
+}
+
+h1{
+    color: salmon;
+	font: 60px 'Courier';
+	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+    font-weight: bold;
 }
 /*---------------------------------------- Background ----------------------------------------*/
 
@@ -189,10 +207,6 @@ p{
     top: 764px;
     background: url('../images/enemies.png') left center;
     animation: enemyWalk 0.6s steps(2) infinite;
-}
-
-.hidden{
-    display: none;
 }
 
 @keyframes enemyWalk {
