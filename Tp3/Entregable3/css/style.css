@@ -3,13 +3,37 @@ body{
 }
 
 button {
-    background-image: none;
+    border: 10px ridge brown;
+    margin: 10px;
+    background-color: salmon;
+    font: 36px 'Impact';
 }
 .game{
     display: flex;
     justify-content: center;
     
 }
+
+#resetButton{
+    justify-content: right;
+}
+
+.resetButtonDiv{
+    display: flex;
+    justify-content: right;
+}
+
+p{
+    color: salmon;
+	font: 36px 'Impact';
+	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+}
+
+.playButtonDiv{
+    display: flex;
+    justify-content: center;
+}
+/*---------------------------------------- Background ----------------------------------------*/
 
 .background{
     border: 7px solid black;
@@ -21,12 +45,13 @@ button {
 }
 
 .backgroundMove{
+    border: 7px solid black;    
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
     width: 1024px;
     height: 960px;
-    animation: backgroundMove 7s linear infinite;
+    animation: backgroundMove 4s linear infinite;
 }
 
 @keyframes backgroundMove {
@@ -38,8 +63,9 @@ button {
     }
 }
 
+/*---------------------------------------- Player 1 ----------------------------------------*/
+
 .playerIdle{
-    border: 3px solid black;
     width: 64px;
     height: 128px;
     position: absolute;
@@ -53,32 +79,30 @@ button {
     0% { background-position: -721px -208px;}
     100% {background-position: -953px -208px;}
 }
-    
+
 .playerRun{
-    border: 3px solid black;
     width: 64px;
     height: 128px;
     position: absolute;
     left: 60px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
-    animation: walk 0.75s steps(3) infinite;
+    animation: run 0.5s steps(3) infinite;
 }
 
-@keyframes walk {
+@keyframes run {
     0% { background-position: -956px -208px;}
     100% {background-position: -1328px -208px;}
 }
 
 .playerJump{
-    border: 3px solid black;
     width: 64px;
     height: 128px;
     position: absolute;
     left: 68px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
-    animation: jump 1.4s steps(7);
+    animation: jump 1s steps(7);
 }
 
 @keyframes jump {
@@ -93,23 +117,63 @@ button {
     100% {background-position: -1436px -208px;}
 }
 
-.player2{
-    width: 16px;
-    height: 32px;
+/*---------------------------------------- Player 2 ----------------------------------------*/
+
+.player2Idle{
+    width: 64px;
+    height: 128px;
     position: absolute;
-    left: 0;
-    top: 176px;
+    left: 60px;
+    top: 704px;
     background: url('../images/marioSheet.png') left center;
-    animation: walk2 0.6s steps(3) infinite;
+    animation: idle2 1s steps(2) infinite;
 }
 
-@keyframes walk2 {
-    0% { background-position: -237px -122px;}
-    100% {background-position: -312px -122px;}
+@keyframes idle2 {
+    0% { background-position: -721px -488px;}
+    100% {background-position: -953px -488px;}
 }
+
+.player2Run{
+    width: 64px;
+    height: 128px;
+    position: absolute;
+    left: 60px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    animation: run2 0.5s steps(3) infinite;
+}
+
+@keyframes run2 {
+    0% { background-position: -946px -488px;}
+    100% {background-position: -1248px -488px;}
+}
+
+.player2Jump{
+    width: 64px;
+    height: 128px;
+    position: absolute;
+    left: 68px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    animation: jump2 1s steps(7);
+}
+
+@keyframes jump2 {
+    0% {background-position: -1448px -488px;}
+    12.5% {top:644px; background-position: -1448px -488px;}
+    25% {top:584px; background-position: -1448px -488px;}
+    37.5% {top:524px; background-position: -1448px -488px;}
+    50% {top:464px; background-position: -1448px -488px;}
+    62.5% {top:524px; background-position: -1448px -488px;}
+    75% {top:584px; background-position: -1448px -488px;}
+    87.5% {top:644px; background-position: -1448px -488px;}
+    100% {background-position: -1448px -488px;}
+}
+
+/*---------------------------------------- Enemies ----------------------------------------*/
 
 .enemies{
-    border: 3px solid black;
     width: 64px;
     height: 80px;
     position: absolute;
@@ -128,8 +192,9 @@ button {
     100% {background-position: -596px -608px;}
 }
 
+/*---------------------------------------- Coin ----------------------------------------*/
+
 .coin{
-    border: 3px solid black;
     width: 40px;
     height: 60px;
     position: absolute;

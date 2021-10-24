@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
+    
 </head>
 <body>
     <div class="containerAll">
-        <div class="containerButtons">
-            <button type="button" id="playButton">Jugar</button>
-            <button type="button" id="resetButton">Reiniciar</button>
-        </div>
         <div class="game" id="game">
             <div class="background" id="background">
                 <div class="playerIdle" id="player"></div>
+                <div class="resetButtonDiv"><button type="button" id="resetButton">RESTART</button></div>
+                <div class="scoreboard"><p id="scoreboard"></p></div>
+                <div class="liveCounter"><p id="livesCounter"></p></div>  
+                <div class="playButtonDiv"><button type="button" id="playButton">PLAY</button></div>
                 <div class="hidden" id="enemies"></div>
                 <div class="hidden" id="coin"></div>
             </div>
