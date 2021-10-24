@@ -59,6 +59,28 @@ h1{
 	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
     font-weight: bold;
 }
+
+#playerSelectionDiv{
+    display: flex;
+    justify-content: center;
+    background-color: salmon;
+    border: 10px ridge brown;
+    margin: 0 29%;
+}
+
+#playerSelectionButton{
+    width: 83px;
+    height: 148px;
+    background: url('../images/marioSheet.png') left center;
+    animation: idle 1s steps(2) infinite;
+}
+
+#player2SelectionButton{
+    width: 83px;
+    height: 148px;
+    background: url('../images/marioSheet.png') left center;
+    animation: idle2 1s steps(2) infinite;
+}
 /*---------------------------------------- Background ----------------------------------------*/
 
 .background{

@@ -20,7 +20,7 @@ function play(){
     document.getElementById("instructions").className = "hidden";
     document.getElementById("endScreen").className = "hidden";
     document.getElementById("endScreenText").innerHTML = "";
-    playerRun();
+    document.getElementById("playerSelectionDiv").style.display = "none";
     liveCounter();
     scoreCounter();
     backgroundMove();
@@ -28,6 +28,12 @@ function play(){
     enemyCollision();
     coinMovement();
     coinCollision();
+    if (player.className == "playerIdle") {
+        playerRun();
+    }
+    else {
+        player2Run();
+    }
 }
 
 //Le da movimiento al fondo
@@ -77,11 +83,22 @@ function endGame(){
     document.querySelector("#resetButton").className="hidden";
     document.querySelector("#instructionsButton").className="";
     document.getElementById("endScreenText").innerHTML = "YOUR FINAL SCORE IS: " + score;
+    document.getElementById("playerSelectionDiv").style.display = "flex";
 }
 
 document.querySelector("#resetButton").addEventListener('click', restartGame);
 function restartGame(){
     endGame();
+}
+
+document.querySelector("#playerSelectionButton").addEventListener('click', playerSwitch);
+function playerSwitch(){
+    player.className = "playerIdle";
+}
+
+document.querySelector("#player2SelectionButton").addEventListener('click', player2Switch);
+function player2Switch(){
+    player.className = "player2Idle";
 }
 
 /* ----------------------------------- Player -----------------------------------*/
@@ -93,14 +110,24 @@ document.addEventListener('keydown', jump);
 function jump(event) {
     var x = event.keyCode;
     if (x == 87) {
-        player.className = "playerJump"
-        player.addEventListener("animationend", playerRun);
+        if (player.className == "playerRun"){
+            player.className = "playerJump"
+            player.addEventListener("animationend", playerRun);
+        }
+        else {
+            player.className = "player2Jump"
+            player.addEventListener("animationend", player2Run);
+        }
     }
 }
 
 //vuelve a activar la animacion de run
 function playerRun() {
     player.className = "playerRun"
+}
+
+function player2Run() {
+    player.className = "player2Run"
 }
 
 /* ----------------------------------- Enemy -----------------------------------*/
@@ -198,3 +225,9 @@ function coinCollision(){
         }
     ;}, 200); 
 }
+
+/*
+-Accion al agarrar moneda
+-Parallax
+-Otro enemy?
+*/
