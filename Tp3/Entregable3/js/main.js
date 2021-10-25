@@ -46,11 +46,12 @@ function backgroundMove() {
 
 //Actualiza el contador de vidas
 function liveCounter(){   
+    livesCounter.innerHTML = "LIVES: " + lives;
     if (lives == 0) {
         gameEnded = true;
         endGame();
     }
-    livesCounter.innerHTML = "LIVES: " + lives;
+    
 }
 
 //actualiza el contador del score y cada 10 coins da 1 vida
@@ -82,6 +83,8 @@ function endGame(){
     player.className = "playerIdle";
     enemies.className = "hidden";
     coin.className = "hidden";
+    livesCounter.innerHTML = "";
+    scoreboard.innerHTML = "";
     document.querySelector("#playButton").className="";
     document.querySelector("#resetButton").className="hidden";
     document.querySelector("#instructionsButton").className="";
@@ -167,7 +170,7 @@ function enemyCollision(){
         let playerPosition = player.getBoundingClientRect();
         let value2 = playerPosition.right - enemyPosition.right;
         let value3 = playerPosition.top - enemyPosition.top; 
-        if((value2>-50 && value2<50) && (value3>-100 && value3<100)){
+        if((value2>-40 && value2<40) && (value3>-80 && value3<80)){
             enemies.className = "hidden";
             clearInterval(intervalEnemies);
             setTimeout( () => {  
@@ -213,7 +216,7 @@ function flyingEnemyCollision(){
         let playerPosition = player.getBoundingClientRect();
         let value2 = playerPosition.right - enemyPosition.right;
         let value3 = playerPosition.top - enemyPosition.top; 
-        if((value2>-50 && value2<50) && (value3>-100 && value3<100)){
+        if((value2>-40 && value2<40) && (value3>-80 && value3<80)){
             flyingEnemies.className = "hidden";
             clearInterval(intervalFlyingEnemies);
             setTimeout( () => {  

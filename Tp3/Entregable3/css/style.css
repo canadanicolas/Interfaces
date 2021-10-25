@@ -209,13 +209,13 @@ h1{
 
 @keyframes jump2 {
     0% {background-position: -1448px -488px;}
-    12.5% {top:644px; background-position: -1448px -488px;}
-    25% {top:584px; background-position: -1448px -488px;}
-    37.5% {top:524px; background-position: -1448px -488px;}
-    50% {top:464px; background-position: -1448px -488px;}
-    62.5% {top:524px; background-position: -1448px -488px;}
-    75% {top:584px; background-position: -1448px -488px;}
-    87.5% {top:644px; background-position: -1448px -488px;}
+    12.5% {top:629px; background-position: -1448px -488px;}
+    25% {top:569px; background-position: -1448px -488px;}
+    37.5% {top:509px; background-position: -1448px -488px;}
+    50% {top:449px; background-position: -1448px -488px;}
+    62.5% {top:509px; background-position: -1448px -488px;}
+    75% {top:569px; background-position: -1448px -488px;}
+    87.5% {top:629px; background-position: -1448px -488px;}
     100% {background-position: -1448px -488px;}
 }
 
@@ -242,7 +242,7 @@ h1{
     height: 94px;
     position: absolute;
     right: 0;
-    top: 550px;
+    top: 600px;
     background: url('../images/enemies.png') left center;
     animation: flyingEnemies 0.6s steps(2) infinite;
 }
