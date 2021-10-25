@@ -28,6 +28,9 @@ function play(){
     enemyCollision();
     coinMovement();
     coinCollision();
+    flyingEnemyMovement();
+    flyingEnemyCollision();
+
     if (player.className == "playerIdle") {
         playerRun();
     }
@@ -110,7 +113,7 @@ document.addEventListener('keydown', jump);
 function jump(event) {
     var x = event.keyCode;
     if (x == 87) {
-        if (player.className == "playerRun"){
+        if (player.className == "playerRun" || player.className == "playerJump"){
             player.className = "playerJump"
             player.addEventListener("animationend", playerRun);
         }
@@ -165,10 +168,56 @@ function enemyCollision(){
         let value2 = playerPosition.right - enemyPosition.right;
         let value3 = playerPosition.top - enemyPosition.top; 
         if((value2>-50 && value2<50) && (value3>-100 && value3<100)){
-            enemies.className = "";
+            enemies.className = "hidden";
             clearInterval(intervalEnemies);
             setTimeout( () => {  
                 enemyMovement();
+            }, Math.floor(Math.random() * 2000)); //new enemy  in between 0 and 2 seconds
+            lives--;
+            liveCounter();
+        }
+    ;}, 200);
+    
+}
+
+let intervalFlyingEnemies;
+let flyingEnemySpeed = 7;
+let flyingEnemies = document.getElementById("flyingEnemies");
+
+//setea un intervalo de movimiento de los enemigos de tierra, su velocidad de forma random y un spawn time random
+function flyingEnemyMovement() {
+    let flyingEnemyValue = 1084;
+    flyingEnemies.className = "flyingEnemies";
+    intervalFlyingEnemies = setInterval(function () {
+        if (flyingEnemyValue < 0) {
+            flyingEnemies.className = "hidden";
+            clearInterval(intervalFlyingEnemies);
+            setTimeout( () => { 
+                flyingEnemySpeed =  ((Math.random() * 10) + 5); //random enemy speed in between 5 and 15px
+                flyingEnemyMovement();
+            }, Math.floor(Math.random() * 2000)); //new enemy in between 0 and 2 seconds
+        }
+        flyingEnemyValue -= flyingEnemySpeed;
+        let flyingEnemyMove = flyingEnemyValue.toString().concat("px");
+        flyingEnemies.style.left = flyingEnemyMove;
+        if(gameEnded){
+            clearInterval(intervalFlyingEnemies);
+        }
+    }, 1084 / 60);
+}
+
+//define si se colisiono o no contra un enemigo de tierra 
+function flyingEnemyCollision(){
+    setInterval(function(){  
+        let enemyPosition = flyingEnemies.getBoundingClientRect();
+        let playerPosition = player.getBoundingClientRect();
+        let value2 = playerPosition.right - enemyPosition.right;
+        let value3 = playerPosition.top - enemyPosition.top; 
+        if((value2>-50 && value2<50) && (value3>-100 && value3<100)){
+            flyingEnemies.className = "hidden";
+            clearInterval(intervalFlyingEnemies);
+            setTimeout( () => {  
+                flyingEnemyMovement();
             }, Math.floor(Math.random() * 2000)); //new enemy  in between 0 and 2 seconds
             lives--;
             liveCounter();
@@ -229,5 +278,4 @@ function coinCollision(){
 /*
 -Accion al agarrar moneda
 -Parallax
--Otro enemy?
 */

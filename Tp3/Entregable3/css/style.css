@@ -236,6 +236,22 @@ h1{
     100% {background-position: -596px -608px;}
 }
 
+.flyingEnemies{
+    border: 3px solid black;
+    width: 64px;
+    height: 94px;
+    position: absolute;
+    right: 0;
+    top: 550px;
+    background: url('../images/enemies.png') left center;
+    animation: flyingEnemies 0.6s steps(2) infinite;
+}
+
+@keyframes flyingEnemies {
+    0% { background-position: -360px -122px;}
+    100% {background-position: -596px -122px;}
+}
+
 /*---------------------------------------- Coin ----------------------------------------*/
 
 .coin{
