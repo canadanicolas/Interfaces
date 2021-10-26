@@ -118,28 +118,37 @@ document.addEventListener('keydown', jump);
 function jump(event) {
     var x = event.keyCode;
     console.log(x);
+    let jumping = false;
     if (x == 87 && gameStarted == true) {
-        if (player.className == "playerRun" || player.className == "playerJump"){
+        if (player.className == "playerRun" && jumping == false){
+            jumping = true;
             document.getElementById("jumpSound").play();
             player.className = "playerJump"
             player.addEventListener("animationend", playerRun);
+            jumping = false;
         }
-        else {
-            player.className = "player2Jump"
+        else if (player.className == "player2Run" && jumping == false) {
+            jumping = true;
             document.getElementById("jumpSound").play();
+            player.className = "player2Jump"
             player.addEventListener("animationend", player2Run);
+            jumping = false;
         }
     }
     if (x == 69 && gameStarted == true) {
-        if (player.className == "playerRun" || player.className == "playerLongJump"){
+        if (player.className == "playerRun" && jumping == false){
+            jumping = true;
             document.getElementById("jumpSound").play();
             player.className = "playerLongJump"
             player.addEventListener("animationend", playerRun);
+            jumping = false;
         }
-        else {
-            player.className = "player2Jump"
+        else if (player.className == "player2Run" && jumping == false){
+            jumping = true;
+            player.className = "player2LongJump"
             document.getElementById("jumpSound").play();
             player.addEventListener("animationend", player2Run);
+            jumping = false;
         }
     }
 }
