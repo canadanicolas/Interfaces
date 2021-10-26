@@ -16,6 +16,7 @@ function play(){
     score = 0;
     enemies.className = "enemies";
     coin.className = "coin";
+    document.getElementById("gameTimer").innerHTML = "Time Left: 3:00";
     document.querySelector("#playButton").className="hidden";
     document.querySelector("#instructionsButton").className="hidden";
     document.getElementById("instructions").className = "hidden";
@@ -31,6 +32,7 @@ function play(){
     coinCollision();
     flyingEnemyMovement();
     flyingEnemyCollision();
+    gameTimer();
 
     if (player.className == "playerIdle") {
         playerRun();
@@ -82,6 +84,7 @@ function endGame(){
     clearInterval(intervalCoin);
     clearInterval(intervalEnemies);
     clearInterval(intervalFlyingEnemies);
+    clearInterval(gameTime);
     document.getElementById("background").className = "background";
     player.className = "playerIdle";
     enemies.className = "hidden";
@@ -92,6 +95,7 @@ function endGame(){
     document.querySelector("#instructionsButton").className="";
     document.getElementById("endScreenText").innerHTML = "YOUR FINAL SCORE IS: " + score;
     document.getElementById("playerSelectionDiv").style.display = "flex";
+    document.getElementById("gameTimer").className = "hidden";
 }
 
 document.querySelector("#playerSelectionButton").addEventListener('click', playerSwitch);
@@ -165,7 +169,7 @@ function enemyCollision(){
         let playerPosition = player.getBoundingClientRect();
         let value2 = playerPosition.right - enemyPosition.left;
         let value3 = playerPosition.bottom - enemyPosition.top; 
-        if((value2>0 && value2<108) && (value3>0 && value3<62)){
+        if((value2>0 && value2<108) && (value3>0 && value3<58)){
             enemies.className = "hidden";
             lives = (lives - 1);
             liveCounter();
@@ -255,7 +259,7 @@ function coinCollision(){
             coin.className = "";
             clearInterval(intervalCoin);
             setTimeout( () => { 
-                coinSpeed =  ((Math.random() * 10) + 5); //random coin speed in between 5 and 20px 
+                coinSpeed =  ((Math.random() * 10) + 5); //random coin speed in between 5 and 15px 
                 coinMovement();
             }, Math.floor(Math.random() * 1000 + 1000)); //new coin between 1 and 2 seconds
             score += 10;
@@ -264,6 +268,28 @@ function coinCollision(){
     ;}, 200); 
 }
 
+/*--------------------------------------- Game Timer ---------------------------------------*/
+let gameTime;
+function gameTimer() {
+    let s = 0;
+    let m = 3;
+    gameTime = setInterval(function() {
+        if ((s <= 0) && (m <= 0)) {
+            endGame();
+        } else {
+            if (s <= 0){
+                s = 59;
+                m--;
+            }
+            if (s <= 0 ){
+                document.querySelector("#gameTimer").innerHTML = "Time Left: " + m + ":0" + s;
+            }else{
+                document.querySelector("#gameTimer").innerHTML = "Time Left: " + m + ":" + s;
+            }
+          s--;
+        }
+    }, 1000);
+}
 /*
 -Accion al agarrar moneda
 -Parallax

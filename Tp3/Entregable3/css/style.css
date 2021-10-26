@@ -6,6 +6,8 @@ body{
     background-image: url("../images/webBackground.jpg");
 }
 
+/*---------------------------------------- Game ----------------------------------------*/
+
 button {
     border: 10px ridge brown;
     margin: 10px;
@@ -52,11 +54,20 @@ h1{
 }
 
 #playerSelectionDiv{
-    display: flex;
-    justify-content: center;
     background-color: salmon;
     border: 10px ridge brown;
     margin: 0 29%;
+}
+
+.textPlayerSelection{
+    font: 30px 'Courier'; 
+    font-weight: bold;
+    text-align: center;
+}
+
+.playerSelectionButtonsDiv{
+    display: flex;
+    justify-content: center;
 }
 
 #playerSelectionButton{
@@ -218,7 +229,7 @@ h1{
     transform: scale(0.7);
     position: absolute;
     right: 0;
-    top: 764px;
+    top: 770px;
     background: url('../images/enemies.png') left center;
     animation: enemyWalk 0.6s steps(2) infinite;
 }
