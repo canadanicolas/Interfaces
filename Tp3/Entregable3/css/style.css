@@ -159,6 +159,16 @@ h1{
     animation: jump 0.75s steps(7);
 }
 
+.playerLongJump{
+    width: 64px;
+    height: 128px;
+    position: absolute;
+    left: 80px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    animation: jump 1.25s steps(7);
+}
+
 @keyframes jump {
     0% {background-position: -1436px -208px;}
     12.5% {top:644px; background-position: -1436px -208px;}
@@ -170,17 +180,6 @@ h1{
     87.5% {top:644px; background-position: -1436px -208px;}
     100% {background-position: -1436px -208px;}
 }
-
-.playerLongJump{
-    width: 64px;
-    height: 128px;
-    position: absolute;
-    left: 80px;
-    top: 704px;
-    background: url('../images/marioSheet.png') left center;
-    animation: jump 1.25s steps(7);
-}
-
 
 /*---------------------------------------- Player 2 ----------------------------------------*/
 
@@ -221,7 +220,17 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
-    animation: jump2 1s steps(7);
+    animation: jump2 0.75s steps(7);
+}
+
+.player2LongJump{
+    width: 64px;
+    height: 128px;
+    position: absolute;
+    left: 80px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    animation: jump2 1.25s steps(7);
 }
 
 @keyframes jump2 {
