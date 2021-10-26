@@ -113,23 +113,24 @@ function player2Switch(){
 
 let player = document.getElementById("player");
 document.addEventListener('keydown', jump);
-
+let jumpingSound = document.getElementById("jumpSound");
 //activa la animacion de jump 
 function jump(event) {
     var x = event.keyCode;
-    console.log(x);
     let jumping = false;
     if (x == 87 && gameStarted == true) {
         if (player.className == "playerRun" && jumping == false){
             jumping = true;
-            document.getElementById("jumpSound").play();
+            jumpingSound.currentTime=0;
+            jumpingSound.play();
             player.className = "playerJump"
             player.addEventListener("animationend", playerRun);
             jumping = false;
         }
         else if (player.className == "player2Run" && jumping == false) {
             jumping = true;
-            document.getElementById("jumpSound").play();
+            jumpingSound.currentTime=0;
+            jumpingSound.play();
             player.className = "player2Jump"
             player.addEventListener("animationend", player2Run);
             jumping = false;
@@ -138,15 +139,17 @@ function jump(event) {
     if (x == 69 && gameStarted == true) {
         if (player.className == "playerRun" && jumping == false){
             jumping = true;
-            document.getElementById("jumpSound").play();
+            jumpingSound.currentTime=0;
+            jumpingSound.play();
             player.className = "playerLongJump"
             player.addEventListener("animationend", playerRun);
             jumping = false;
         }
         else if (player.className == "player2Run" && jumping == false){
             jumping = true;
+            jumpingSound.currentTime=0;
+            jumpingSound.play();
             player.className = "player2LongJump"
-            document.getElementById("jumpSound").play();
             player.addEventListener("animationend", player2Run);
             jumping = false;
         }
