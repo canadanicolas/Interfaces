@@ -4,7 +4,7 @@ let gameStarted = false;
 let scoreboard = document.getElementById("scoreboard");
 let score = 0;
 let livesCounter = document.getElementById("livesCounter");
-let lives = 20;
+let lives = 4;
 let finalScore = document.getElementById("finalScore");
 
 document.querySelector("#playButton").addEventListener('click', play);
@@ -12,7 +12,7 @@ document.querySelector("#playButton").addEventListener('click', play);
 function play(){
     gameEnded = false;
     gameStarted = true;
-    lives = 20;
+    lives = 4;
     score = 0;
     enemies.className = "enemies";
     coin.className = "coin";
@@ -48,7 +48,7 @@ function backgroundMove() {
 //Actualiza el contador de vidas
 function liveCounter(){   
     livesCounter.innerHTML = "LIVES: " + lives;
-    if (lives == 0) {
+    if (lives <= 0) {
         gameEnded = true;
         endGame();
     }
@@ -135,7 +135,7 @@ function player2Run() {
 
 /* ----------------------------------- Enemy -----------------------------------*/
 let intervalEnemies;
-let enemySpeed = 9;
+let enemySpeed = 6;
 let enemies = document.getElementById("enemies");
 
 //setea un intervalo de movimiento de los enemigos de tierra, su velocidad de forma random y un spawn time random
@@ -146,7 +146,7 @@ function enemyMovement() {
         if (enemyValue < 0) {
             enemies.className = "hidden";
             clearInterval(intervalEnemies);
-                enemySpeed =  ((Math.random() * 8) + 4); //random enemy speed in between 4 and 8px
+                enemySpeed =  ((Math.random() * 5) + 4); //random enemy speed in between 4 and 9px
                 enemyMovement();
         }
         enemyValue -= enemySpeed;
@@ -163,11 +163,11 @@ function enemyCollision(){
     setInterval(function(){  
         let enemyPosition = enemies.getBoundingClientRect();
         let playerPosition = player.getBoundingClientRect();
-        let value2 = playerPosition.right - enemyPosition.right;
-        let value3 = playerPosition.top - enemyPosition.top; 
-        if((value2>-40 && value2<40) && (value3>-80 && value3<80)){
+        let value2 = playerPosition.right - enemyPosition.left;
+        let value3 = playerPosition.bottom - enemyPosition.top; 
+        if((value2>0 && value2<108) && (value3>0 && value3<62)){
             enemies.className = "hidden";
-            lives--;
+            lives = (lives - 1);
             liveCounter();
         }
     ;}, 50);
@@ -175,7 +175,7 @@ function enemyCollision(){
 }
 
 let intervalFlyingEnemies;
-let flyingEnemySpeed = 7;
+let flyingEnemySpeed = 9;
 let flyingEnemies = document.getElementById("flyingEnemies");
 
 //setea un intervalo de movimiento de los enemigos de tierra, su velocidad de forma random y un spawn time random
@@ -186,7 +186,7 @@ function flyingEnemyMovement() {
         if (flyingEnemyValue < 0) {
             flyingEnemies.className = "hidden";
             clearInterval(intervalFlyingEnemies);
-                flyingEnemySpeed =  ((Math.random() * 8) + 4); //random enemy speed in between 4 and 12px
+                flyingEnemySpeed =  ((Math.random() * 4) + 8); //random enemy speed in between 8 and 12px
                 flyingEnemyMovement();
         }
         flyingEnemyValue -= flyingEnemySpeed;
@@ -198,16 +198,16 @@ function flyingEnemyMovement() {
     }, 1024 / 60);
 }
 
-//define si se colisiono o no contra un enemigo de tierra 
+//define si se colisiono o no contra un enemigo de aire 
 function flyingEnemyCollision(){
     setInterval(function(){  
-        let enemyPosition = flyingEnemies.getBoundingClientRect();
+        let flyingEnemyPosition = flyingEnemies.getBoundingClientRect();
         let playerPosition = player.getBoundingClientRect();
-        let value2 = playerPosition.right - enemyPosition.right;
-        let value3 = playerPosition.top - enemyPosition.top; 
-        if((value2>-50 && value2<50) && (value3>-90 && value3<90)){
+        let value2 = playerPosition.right - flyingEnemyPosition.left;
+        let value3 = playerPosition.top - flyingEnemyPosition.bottom; 
+        if((value2>0 && value2<108) && (value3>-175 && value3<0)){
             flyingEnemies.className = "hidden";
-            lives--;
+            lives = (lives - 0.5);
             liveCounter();
         }
     ;}, 200);
@@ -229,7 +229,7 @@ function coinMovement() {
         coin.className = "hidden";
         clearInterval(intervalCoin);
         setTimeout( () => { 
-            coinSpeed =  ((Math.random() * 10) + 5); //random coin speed in between 5 and 20px
+            coinSpeed =  ((Math.random() * 10) + 5); //random coin speed in between 5 and 15px
             coinMovement();
         }, Math.floor(Math.random() * 2000)); //new coin in between 0 and 2 seconds
     }
@@ -243,20 +243,21 @@ function coinMovement() {
     }, 1024 / 60);
 }
 
-//define si se colisiono o no con una moneda
+//define si se colisiono o no con una moneda y de haberlo hecho suma 10 puntos y hace sonido
 function coinCollision(){
     setInterval(function(){  
         let coinPosition = coin.getBoundingClientRect();
         let playerPosition = player.getBoundingClientRect();
-        let value2 = playerPosition.right - coinPosition.right;
-        let value3 = playerPosition.top - coinPosition.top; 
-        if((value2>-60 && value2<60) && (value3>-80 && value3<80)){
+        let value2 = playerPosition.right - coinPosition.left;
+        let value3 = playerPosition.top - coinPosition.bottom; 
+        if((value2>-20 && value2<104) && (value3>-184 && value3<0)){
+            document.getElementById("coinSound").play();
             coin.className = "";
             clearInterval(intervalCoin);
             setTimeout( () => { 
                 coinSpeed =  ((Math.random() * 10) + 5); //random coin speed in between 5 and 20px 
                 coinMovement();
-            }, Math.floor(Math.random() * 2000)); //new coin between 0 and 2 seconds
+            }, Math.floor(Math.random() * 1000 + 1000)); //new coin between 1 and 2 seconds
             score += 10;
             scoreCounter();
         }

@@ -75,7 +75,7 @@ h1{
 /*---------------------------------------- Background ----------------------------------------*/
 
 .background{
-    border: 7px solid black;
+    border: 10px ridge brown;
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
@@ -84,7 +84,7 @@ h1{
 }
 
 .backgroundMove{
-    border: 7px solid black;    
+    border: 10px ridge brown;   
     position: absolute;
     background-attachment: fixed;
     background:  url("../images/background.png") repeat;
@@ -124,7 +124,7 @@ h1{
     height: 128px;
     position: absolute;
     left: 80px;
-    top: 704px;
+    top: 704px; 
     background: url('../images/marioSheet.png') left center;
     animation: run 0.5s steps(3) infinite;
 }
@@ -215,6 +215,7 @@ h1{
 .enemies{
     width: 64px;
     height: 80px;
+    transform: scale(0.7);
     position: absolute;
     right: 0;
     top: 764px;
@@ -230,9 +231,10 @@ h1{
 .flyingEnemies{
     width: 64px;
     height: 94px;
+    transform: scale(0.5);
     position: absolute;
     right: 0;
-    top: 600px;
+    top: 626px;
     background: url('../images/enemies.png') left center;
     animation: flyingEnemies 0.6s steps(2) infinite;
 }
