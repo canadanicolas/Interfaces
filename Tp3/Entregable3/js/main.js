@@ -79,6 +79,7 @@ function showInstructions(){
 
 //Termina el juego
 function endGame(){
+    document.getElementById("gameLostSound").play();
     gameEnded = true;
     gameStarted = false;
     clearInterval(intervalCoin);
@@ -118,11 +119,13 @@ function jump(event) {
     var x = event.keyCode;
     if (x == 87 && gameStarted == true) {
         if (player.className == "playerRun" || player.className == "playerJump"){
+            document.getElementById("jumpSound").play();
             player.className = "playerJump"
             player.addEventListener("animationend", playerRun);
         }
         else {
             player.className = "player2Jump"
+            document.getElementById("jumpSound").play();
             player.addEventListener("animationend", player2Run);
         }
     }
