@@ -117,10 +117,23 @@ document.addEventListener('keydown', jump);
 //activa la animacion de jump 
 function jump(event) {
     var x = event.keyCode;
+    console.log(x);
     if (x == 87 && gameStarted == true) {
         if (player.className == "playerRun" || player.className == "playerJump"){
             document.getElementById("jumpSound").play();
             player.className = "playerJump"
+            player.addEventListener("animationend", playerRun);
+        }
+        else {
+            player.className = "player2Jump"
+            document.getElementById("jumpSound").play();
+            player.addEventListener("animationend", player2Run);
+        }
+    }
+    if (x == 69 && gameStarted == true) {
+        if (player.className == "playerRun" || player.className == "playerLongJump"){
+            document.getElementById("jumpSound").play();
+            player.className = "playerLongJump"
             player.addEventListener("animationend", playerRun);
         }
         else {
