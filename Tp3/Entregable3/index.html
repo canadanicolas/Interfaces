@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="containerAll">
+        <div class="game" id="game">
+            <div class="background" id="background">
+                <div class="playerIdle" id="player"></div>
+                <div class="gameTimer"><p id="gameTimer"></p></div>
+                <div class="scoreboard"><p id="scoreboard"></p></div>
+                <div class="liveCounter"><p id="livesCounter"></p></div>  
+                <div class="playButtonDiv">
+                    <button type="button" id="playButton">PLAY</button>
+                    <button type="button" id="instructionsButton">INSTRUCTIONS</button>
+                </div>
+                <div class="hidden" id="instructions">
+                    <h3>-Press "w" to jump.</h3>
+                    <h3>-You start with 5 lives.</h3>
+                    <h3>-Ground enemy = -1 life, Flying enemy = -0.5 lives</h3>
+                    <h3>-Each coin equals 10 points, get as many as you can.</h3>
+                    <h3>-For every 10 coins you get an extra life!</h3>
+                    <h3>TIP: You can over or under the flying enemies</h3>
+                </div>
+                <div class="" id="playerSelectionDiv">
+                    <div class="textPlayerSelection">
+                        <h3>PLAYER SELECTION</h3>
+                    </div>
+                    <div class="playerSelectionButtonsDiv">
+                        <button id="playerSelectionButton"></button>
+                        <button id="player2SelectionButton"></button>
+                    </div>
+                </div>
+                <div id="endScreen">
+                    <h1 id="endScreenText"></h1>
+                </div>
+                <div class="hidden" id="enemies"></div>
+                <div class="hidden" id="flyingEnemies"></div>
+                <div class="hidden" id="coin"></div>
+            </div>
+        </div>
+        <video class="hidden" src="./images/coinSound.mp4" id="coinSound"></video>
+    </div>
+</body>
+<script src="js/main.js"></script>
+</html>
