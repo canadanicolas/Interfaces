@@ -1,0 +1,14 @@
+1. Antes de empezar leer las instrucciones que estan en el juego.
+
+2. Sonidos utilizados:
+    -Personaje saltando.
+    -Moneda agarrada.
+    -Juego terminado.
+
+3. Animaciones utilizadas:
+    -Personaje Idle (en la main screen).
+    -Personaje corriendo (in game).
+    -Personaje saltando (es solo de 1 frame ya que se queria seguir con la tematica del mario bros).
+    -Enemigo terrestre (in game).
+    -Enemigo volador (in game).
+    -Moneda (in game).

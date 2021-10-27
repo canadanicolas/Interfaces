@@ -101,11 +101,16 @@ function endGame(){
 
 document.querySelector("#playerSelectionButton").addEventListener('click', playerSwitch);
 function playerSwitch(){
+    document.getElementById("playerSelectionButton").style.border = "10px ridge skyblue";
+    document.getElementById("player2SelectionButton").style.border = "10px ridge brown";
     player.className = "playerIdle";
+    
 }
 
 document.querySelector("#player2SelectionButton").addEventListener('click', player2Switch);
 function player2Switch(){
+    document.getElementById("player2SelectionButton").style.border = "10px ridge skyblue";
+    document.getElementById("playerSelectionButton").style.border = "10px ridge brown";
     player.className = "player2Idle";
 }
 
@@ -318,7 +323,3 @@ function gameTimer() {
         }
     }, 1000);
 }
-/*
--Accion al agarrar moneda
--Parallax
-*/
