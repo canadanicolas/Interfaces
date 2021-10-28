@@ -17,6 +17,7 @@ function play(){
     enemies.className = "enemies";
     coin.className = "coin";
     document.getElementById("gameTimer").innerHTML = "Time Left: 3:00";
+    document.getElementById("gameTimer").className = "gameTimer";
     document.querySelector("#playButton").className="hidden";
     document.querySelector("#instructionsButton").className="hidden";
     document.getElementById("instructions").className = "hidden";
@@ -44,7 +45,18 @@ function play(){
 
 //Le da movimiento al fondo
 function backgroundMove() {
-    document.getElementById("background").className = "backgroundMove";
+    document.getElementById("cloud").style.WebkitAnimationPlayState = "running";
+    document.getElementById("background").style.WebkitAnimationPlayState = "running";
+    document.getElementById("mountain").style.WebkitAnimationPlayState = "running";
+    document.getElementById("plant").style.WebkitAnimationPlayState = "running";
+}
+
+function backgroundStop(){
+    console.log("asd");
+    document.getElementById("cloud").style.WebkitAnimationPlayState = "paused";
+    document.getElementById("background").style.WebkitAnimationPlayState = "paused";
+    document.getElementById("mountain").style.WebkitAnimationPlayState = "paused";
+    document.getElementById("plant").style.WebkitAnimationPlayState = "paused";
 }
 
 //Actualiza el contador de vidas
@@ -86,7 +98,7 @@ function endGame(){
     clearInterval(intervalEnemies);
     clearInterval(intervalFlyingEnemies);
     clearInterval(gameTime);
-    document.getElementById("background").className = "background";
+    backgroundStop();
     player.className = "playerIdle";
     enemies.className = "hidden";
     coin.className = "hidden";

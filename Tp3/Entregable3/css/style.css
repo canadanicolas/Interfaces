@@ -90,22 +90,48 @@ h1{
 /*---------------------------------------- Background ----------------------------------------*/
 
 .background{
-    border: 10px ridge brown;
-    position: absolute;
-    background-attachment: fixed;
-    background:  url("../images/background.png") repeat;
-    width: 1024px;
-    height: 960px;
-}
-
-.backgroundMove{
     border: 10px ridge brown;   
     position: absolute;
     background-attachment: fixed;
-    background:  url("../images/background.png") repeat;
+    background: url("../images/background.png") repeat;
     width: 1024px;
     height: 960px;
+    z-index: -7;
     animation: backgroundMove 4s linear infinite;
+    animation-play-state: paused;
+}
+
+#cloud {
+    width: 100%;
+    height: 92px;
+    position: absolute;
+    top: 180px;
+    background: url("../images/cloud.png") center;
+    z-index: -6;
+    animation: backgroundMove 15s linear infinite;
+    animation-play-state: paused;
+}
+
+#mountain {
+    width: 100%;
+    height: 140px;
+    position: absolute;
+    top: 692px;
+    background: url("../images/mountain.png");
+    z-index: -5;
+    animation: backgroundMove 25s linear infinite;
+    animation-play-state: paused;
+}
+
+#plant {
+    width: 100%;
+    height: 61px;
+    position: absolute;
+    top: 771px;
+    background: url("../images/plant.png");
+    z-index: -4;
+    animation: backgroundMove 6s linear infinite;
+    animation-play-state: paused;
 }
 
 @keyframes backgroundMove {
@@ -126,6 +152,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: idle 1s steps(2) infinite;
 }
 
@@ -141,6 +168,7 @@ h1{
     left: 80px;
     top: 704px; 
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: run 0.5s steps(3) infinite;
 }
 
@@ -156,6 +184,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: jump 0.75s steps(7);
 }
 
@@ -166,6 +195,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: jump 1.25s steps(7);
 }
 
@@ -190,6 +220,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: idle2 1s steps(2) infinite;
 }
 
@@ -205,6 +236,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: run2 0.5s steps(3) infinite;
 }
 
@@ -220,6 +252,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: jump2 0.75s steps(7);
 }
 
@@ -230,6 +263,7 @@ h1{
     left: 80px;
     top: 704px;
     background: url('../images/marioSheet.png') left center;
+    z-index: 0;
     animation: jump2 1.25s steps(7);
 }
 
@@ -255,6 +289,7 @@ h1{
     right: 0;
     top: 770px;
     background: url('../images/enemies.png') left center;
+    z-index: -3;
     animation: enemyWalk 0.6s steps(2) infinite;
 }
 
@@ -271,6 +306,7 @@ h1{
     right: 0;
     top: 626px;
     background: url('../images/enemies.png') left center;
+    z-index: -2;
     animation: flyingEnemies 0.6s steps(2) infinite;
 }
 
@@ -288,6 +324,7 @@ h1{
     right: 0;
     top: 500px;
     background: url('../images/items.png') left center;
+    z-index: -1;
     animation: coinMove 0.6s steps(4) infinite;
 }
 

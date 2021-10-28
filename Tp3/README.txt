@@ -12,3 +12,5 @@
     -Enemigo terrestre (in game).
     -Enemigo volador (in game).
     -Moneda (in game).
+
+Testeado en Google Chrome con una resolucion de pantalla de 1920 x 1080.
