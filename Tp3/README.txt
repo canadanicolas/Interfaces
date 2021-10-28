@@ -13,4 +13,11 @@
     -Enemigo volador (in game).
     -Moneda (in game).
 
+4. Capaz de Parallax:
+    -Montaña.
+    -Nube.
+    -Planta.
+    -Piso.
+no se agregaron mas para seguir el fondo del mario.
+
 Testeado en Google Chrome con una resolucion de pantalla de 1920 x 1080.

@@ -51,6 +51,7 @@ function backgroundMove() {
     document.getElementById("plant").style.WebkitAnimationPlayState = "running";
 }
 
+//Frena la animcaion del fondo
 function backgroundStop(){
     console.log("asd");
     document.getElementById("cloud").style.WebkitAnimationPlayState = "paused";
@@ -111,6 +112,7 @@ function endGame(){
     document.getElementById("gameTimer").className = "hidden";
 }
 
+//Cambia el skin del personaje al player 1
 document.querySelector("#playerSelectionButton").addEventListener('click', playerSwitch);
 function playerSwitch(){
     document.getElementById("playerSelectionButton").style.border = "10px ridge skyblue";
@@ -119,6 +121,7 @@ function playerSwitch(){
     
 }
 
+//Cambia el skin del personaje al player 2
 document.querySelector("#player2SelectionButton").addEventListener('click', player2Switch);
 function player2Switch(){
     document.getElementById("player2SelectionButton").style.border = "10px ridge skyblue";
@@ -314,7 +317,9 @@ function coinCollision(){
 }
 
 /*--------------------------------------- Game Timer ---------------------------------------*/
+
 let gameTime;
+//Setea y muestra el tiempo faltante para terminar el juego.
 function gameTimer() {
     let s = 0;
     let m = 3;
@@ -326,7 +331,7 @@ function gameTimer() {
                 s = 59;
                 m--;
             }
-            if (s <= 0 ){
+            if (s < 10 ){
                 document.querySelector("#gameTimer").innerHTML = "Time Left: " + m + ":0" + s;
             }else{
                 document.querySelector("#gameTimer").innerHTML = "Time Left: " + m + ":" + s;
