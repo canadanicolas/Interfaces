@@ -27,10 +27,10 @@ function play(){
     liveCounter();
     scoreCounter();
     backgroundMove();
-    enemyMovement();
-    enemyCollision();
     coinMovement();
     coinCollision();
+    enemyMovement();
+    enemyCollision();
     flyingEnemyMovement();
     flyingEnemyCollision();
     gameTimer();
