@@ -1,0 +1,36 @@
+body{
+    text-align: center;
+    background-color: #C1E5E8;
+}
+
+h1 {
+    font-size: 54px;
+}
+
+h2 {
+    font-size: 42px;
+}
+
+h3{
+    padding-left: 25%;
+    font-size: 36px;
+    text-align: left;
+}
+
+img {
+    width: 50%;
+}
+
+
+a{
+    padding: 20px;
+    background-color: #16BAC6;
+    border: 3px black solid;
+    font-size: 32px;
+    color: black;
+}
+
+.divFigma {
+    display: flex;
+    justify-content: space-evenly;
+}
