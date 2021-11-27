@@ -66,8 +66,16 @@ function liveCounter(){
     if (lives <= 0) {
         gameEnded = true;
         endGame();
-    }
-    
+    }   
+}
+
+function lifeLost(){
+    heart.className = "heart";
+    heart.addEventListener("animationend", endLifeLostAnimation);   
+}
+
+function endLifeLostAnimation (){
+    document.getElementById("heart").className = "hidden";
 }
 
 //actualiza el contador del score y cada 10 coins da 1 vida
@@ -220,6 +228,7 @@ function enemyCollision(){
         if((value2>0 && value2<108) && (value3>0 && value3<58)){
             enemies.className = "hidden";
             lives = (lives - 1);
+            lifeLost();
             liveCounter();
         }
     ;}, 50);
@@ -260,6 +269,7 @@ function flyingEnemyCollision(){
         if((value2>0 && value2<108) && (value3>-175 && value3<0)){
             flyingEnemies.className = "hidden";
             lives = (lives - 0.5);
+            lifeLost();
             liveCounter();
         }
     ;}, 200);

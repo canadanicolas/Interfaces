@@ -331,3 +331,23 @@ h1{
     0% { background-position: -512px -378px;}
     100% {background-position: -980px -378px;}
 }
+
+/*---------------------------------------- Heart ----------------------------------------*/
+
+.heart{
+    width: 32px;
+    height: 34px;
+    transform: scale(2);
+    position: absolute;
+    left: 160px;
+    top: 720px;
+    background: url('../images/heart.png') left center;
+    z-index: 1;
+    animation: heartMove 1s steps(7);
+}
+
+@keyframes heartMove {
+    0% { background-position: -24px -56px;}
+    100% {background-position: -314px -56px;}
+}
+
