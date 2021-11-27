@@ -6,7 +6,12 @@
 }
 
 a{
+    color: black;
     text-decoration:none;
+}
+
+a:visited{
+    color: black;
 }
 
 section {
@@ -27,6 +32,10 @@ h3 {
 
 h4 {
   font: 18px Arial;  
+}
+
+h5{
+    font: 14px Arial;
 }
 
 /*---------------------------------------------        ---------------------------------------------*/
@@ -103,7 +112,7 @@ header {
 }
 
 .img-navBar {
-    width: 75px;
+    width: 50px;
 }
 
 .button-nav {
@@ -125,7 +134,8 @@ header {
 
 .h4-navBar {
     padding-left: 40px;
-    margin: 15px 0 0 0;
+    margin: 40px 0 0 0;
+    font-size: 28px;
 }
 
 .img-profile {
@@ -186,18 +196,20 @@ margin: 0;
 }
 
 /*--------------------------------------------- Stories ---------------------------------------------*/
-
-.container-stories {
+.container-stories{
     width: 1032px;
     background-color: #FFFFFF;
+    margin: 0 40px 0 40px; 
+}
+
+.subcontainer-stories {
     display: grid;
     grid: 1fr / auto-flow 120px;
     overflow-x: auto;
-    margin: 0 40px 0 40px;
     padding: 10px 0px 10px 40px;
 }
 
-.container-stories::-webkit-scrollbar {
+.subcontainer-stories::-webkit-scrollbar {
     display: none;
 }
 
@@ -206,6 +218,7 @@ margin: 0;
     height: 90px;
     border-radius: 100%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border: 2px solid #16BAC6;
 }
 
 /*--------------------------------------------- WritePost ---------------------------------------------*/
@@ -248,10 +261,10 @@ margin: 0;
 .button-writePost{
     background-color: #16BAC6;
     height: 40px;
-    width: 150px;
+    width: 300px;
     border: 0;
     border-radius: 30px;
-    margin-left: 517px;
+    margin-left: 368px;
     font: 24px Arial;
     box-shadow: 0px 0px 12px -2px #195f6b78;
 }
@@ -291,6 +304,7 @@ margin: 0;
 .button-postAction{
     display: flex;
     text-align: center;
+    align-items: center;
 }
 
 .container-postAllComments{
@@ -299,19 +313,20 @@ margin: 0;
 }
 
 .button-allComments{
-    background-color: #16BAC6;
+    background-color: #195F6B;
     height: 40px;
     width: 300px;
     border: 0;
     border-radius: 30px;
     margin-top: 20px;
     font: 24px Arial;
+    color: white;
     box-shadow: 0px 0px 12px -2px #195f6b78;
 }
 
 .button-allComments:hover {
-    background-color: #195F6B;
-    color: #FFFFFF;
+    background-color: #16BAC6;
+    color: black;
 }
 
 .container-postImg{
@@ -374,9 +389,34 @@ margin: 0;
 .container-profilePersonalizedBoxes{
     width: 1072px;
     margin: 0px 40px 30px 40px;
+    height: 348px;
 }
 
-.button-profilePublications{
+.h3-profile{
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.h3-profile:hover{
+    text-decoration: underline;
+}
+
+.h4-profile{
+    color: #195F6B;
+    text-decoration: underline;
+}
+
+.h4-profile:hover{
+    color: #16BAC6;
+}
+
+.h4-profileEdit{
+    text-decoration: none;
+    color: black;
+}
+
+/*.button-profilePublications{
     height: 40px;
     width: 352px;
     background: #16BAC6;
@@ -418,7 +458,7 @@ margin: 0;
 .button-profileConnections:hover {
     background-color: #195F6B;
     color: #FFFFFF;
-}
+}*/
 
 .container-profilePersonalizedBoxes{
     display: flex;
@@ -459,3 +499,163 @@ margin: 0;
     height: 140px;
 }
 
+/*---------------------------------------------       ---------------------------------------------*/
+/*--------------------------------------------- Login ---------------------------------------------*/
+/*---------------------------------------------       ---------------------------------------------*/
+
+.img-backgroundLogin{
+    position: absolute;
+    background-image: url(../Img/vetBackground1.jpg);
+    width: 1920px;
+    height: 936px;
+    filter: blur(2px) brightness(70%);
+}
+
+.container-LogoLogin{
+    background-color: #C1E5E8;
+    position: absolute;
+    top: 374px;
+    left: 20%;
+    border-radius: 30px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.form-login{
+    position: absolute;
+    top: 238px;
+    left: 60%;
+    height: 401px;
+    width: 440px;
+    padding-top: 40px;
+    background-color: #C1E5E8;
+    border-radius: 30px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    text-align: center;
+}
+
+.input-login{
+    width: 340px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font: 24px Arial;
+    color: black;
+    padding-left: 20px;
+}
+
+.input-loginError{
+    border: 1px solid #BE0000;
+}
+
+.button-login{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width: 360px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font: 36px Arial;
+    background-color: #16BAC6;
+}
+
+.h5-forgotPassword{
+    font: 14px Arial;
+    color: #195F6B;
+}
+
+.line-login{
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.button-signUp{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width: 360px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 40px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font: 36px Arial;
+    color: white;
+    background-color: #195F6B;
+}
+
+.button-signUp:visited{
+    color: white;
+}
+
+.h5-errorLogin{
+    color: #BE0000;
+    margin-top: -20px;
+    margin-bottom: 2px;
+}
+
+/*---------------------------------------------          ---------------------------------------------*/
+/*--------------------------------------------- Register ---------------------------------------------*/
+/*---------------------------------------------          ---------------------------------------------*/
+
+.form-register{
+    position: absolute;
+    top: 163px;
+    left: 60%;
+    height: 551px;
+    width: 420px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #C1E5E8;
+    border-radius: 30px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    text-align: center;
+}
+
+.input-register{
+    margin-bottom: 20px;
+}
+
+.h2-register{
+    padding-bottom: 20px;
+}
+
+.container-labelRegister{
+    font: 16px Arial;
+    position: relative;
+    left: -150px;
+    padding-bottom: 2px;
+}
+
+.label-email{
+    position: relative;
+    left: -80px;
+}
+
+.label-gender{
+    position: relative;
+    left: -156px;
+}
+
+.container-radioRegister{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width: 180px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 40px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font: 36px Arial;
+    color: white;
+    background-color: #195F6B;
+}
+
+.signUpRegister{
+    margin-top: 18px;
+}
