@@ -51,9 +51,8 @@ function backgroundMove() {
     document.getElementById("plant").style.WebkitAnimationPlayState = "running";
 }
 
-//Frena la animcaion del fondo
+//Frena la animacion del fondo
 function backgroundStop(){
-    console.log("asd");
     document.getElementById("cloud").style.WebkitAnimationPlayState = "paused";
     document.getElementById("background").style.WebkitAnimationPlayState = "paused";
     document.getElementById("mountain").style.WebkitAnimationPlayState = "paused";
@@ -65,17 +64,22 @@ function liveCounter(){
     livesCounter.innerHTML = "LIVES: " + lives;
     if (lives <= 0) {
         gameEnded = true;
-        endGame();
+        player.className = "player1Death";
+        setTimeout(endScreen, 1800);
+        endGame();   
     }   
 }
 
-function lifeLost(){
+function lifeLost(int){
     heart.className = "heart";
+    document.getElementById("lifeLost").className = "lifeLost";
+    document.getElementById("lifeLost").innerHTML = "-"+ int + " LIFE";
     heart.addEventListener("animationend", endLifeLostAnimation);   
 }
 
 function endLifeLostAnimation (){
     document.getElementById("heart").className = "hidden";
+    document.getElementById("lifeLost").className = "hidden";
 }
 
 //actualiza el contador del score y cada 10 coins da 1 vida
@@ -108,6 +112,9 @@ function endGame(){
     clearInterval(intervalFlyingEnemies);
     clearInterval(gameTime);
     backgroundStop();
+}
+
+function endScreen(){
     player.className = "playerIdle";
     enemies.className = "hidden";
     coin.className = "hidden";
@@ -228,7 +235,7 @@ function enemyCollision(){
         if((value2>0 && value2<108) && (value3>0 && value3<58)){
             enemies.className = "hidden";
             lives = (lives - 1);
-            lifeLost();
+            lifeLost(1);
             liveCounter();
         }
     ;}, 50);
@@ -269,7 +276,7 @@ function flyingEnemyCollision(){
         if((value2>0 && value2<108) && (value3>-175 && value3<0)){
             flyingEnemies.className = "hidden";
             lives = (lives - 0.5);
-            lifeLost();
+            lifeLost(0.5);
             liveCounter();
         }
     ;}, 200);
