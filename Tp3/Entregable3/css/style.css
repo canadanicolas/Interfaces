@@ -310,6 +310,38 @@ h1{
     100% {background-position: -1448px -488px;}
 }
 
+.player2Death{
+    width: 64px;
+    height: 92px;
+    position: absolute;
+    left: 80px;
+    top: 704px;
+    background: url('../images/marioSheet.png') left center;
+    z-index: 0;
+    animation: death2 2s steps(2);
+}
+
+@keyframes death2 {
+    0% {background-position: -0px -505px;}
+    6.25% {top:621px;}
+    12.5% {top:538px;}
+    18.75%{top:455px;}
+    25% {top:372px;}
+    31.25% {top:289px;}
+    34.375% {top:247.5px;}
+    37.5% {top:289px;}
+    43.75% {top:372px;}
+    50% {top:455px;}
+    56.25% {top:538px;}
+    62.5% {top:621px;}
+    68.75% {top:704px;}
+    75% {top:787px;}
+    81.25% {top:870px;}
+    87.5% {top:953px}
+    93.75% {top:1036px;}
+    100% {background-position: -3110px -505px;}
+}
+
 /*---------------------------------------- Enemies ----------------------------------------*/
 
 .enemies{

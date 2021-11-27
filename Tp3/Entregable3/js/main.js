@@ -64,9 +64,16 @@ function liveCounter(){
     livesCounter.innerHTML = "LIVES: " + lives;
     if (lives <= 0) {
         gameEnded = true;
-        player.className = "player1Death";
-        setTimeout(endScreen, 1800);
-        endGame();   
+        if (player.className == "playerRun" || player.className == "playerJump" || player.className == "playerLongJump") {
+            player.className = "player1Death";
+            setTimeout(endScreen, 1800);
+            endGame(); 
+        }
+        else if (player.className == "player2Run" || player.className == "player2Jump" || player.className == "player2LongJump") {
+            player.className = "player2Death";
+            setTimeout(endScreen, 1800);
+            endGame(); 
+        }
     }   
 }
 
@@ -117,6 +124,7 @@ function endGame(){
 function endScreen(){
     player.className = "playerIdle";
     enemies.className = "hidden";
+    flyingEnemies.className = "hidden";
     coin.className = "hidden";
     livesCounter.innerHTML = "";
     scoreboard.innerHTML = "";
@@ -125,6 +133,8 @@ function endScreen(){
     document.getElementById("endScreenText").innerHTML = "YOUR FINAL SCORE IS: " + score;
     document.getElementById("playerSelectionDiv").style.display = "flex";
     document.getElementById("gameTimer").className = "hidden";
+    document.getElementById("enemies").style.left = "1024px";
+    document.getElementById("flyingEnemies").style.left = "1024px";
 }
 
 //Cambia el skin del personaje al player 1
