@@ -6,211 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./Style/style.css">
+    <script src="./Js/parallax.js" type="text/javascript"></script>
 </head>
 <body>
-    <header>
-        <div class="container-logo">
-            <a href="./index.html"><img class="img-logo" src="./Img/logo.png" alt=""></a>
-        </div>
-        <div class="container-searchBar">
-            <input class="input-searchBar" placeholder="🍳 Search in Companion" type="text">
-        </div>
-        <div class="container-profileHeader">
-            <a href="profile.html"><img class="img-profile" src="./Img/vet1.jpg" alt=""></a>
-            <a href="profile.html"><h3 class="h3-navBar">Nicolas Cañada</h3></a>
-            <a href="login.html"><img class="img-logoutProfile" src="./Img/icon-logout.png" alt=""></a>
-        </div>
-    </header>
-    <section>
-        <aside class="aside-left">
-            <button class="button-nav">
-                <img class="img-navBar" src="./Img/icon-profile.png" alt="">
-                <h3 class="h3-navBar">Profile</h3>
-            </button>
-            <button class="button-nav">
-                <img class="img-navBar" src="./Img/icon-home.png" alt="">
-                <h3 class="h3-navBar">Home</h3>
-            </button>
-            <button class="button-nav">
-                <img class="img-navBar" src="./Img/icon-explore.png" alt="">
-                <h3 class="h3-navBar">Explore</h3>
-            </button>
-            <button class="button-nav">
-                <img class="img-navBar" src="./Img/icon-comments.png" alt="">
-                <h3 class="h3-navBar">Messages</h3>
-            </button>
-            <button class="button-nav">
-                <img class="img-navBar" src="./Img/icon-notification.png" alt="">
-                <h3 class="h3-navBar">Notifications</h3>
-            </button>
-            <div>
-                <h3 class="h4-navBar">Suggested Users:</h3>
-                <a href="profile.html" class="container-profile">
-                    <img class="img-profile" src="./Img/vet4.jpg" alt="">
-                    <h3 class="h3-navBar">Josefa Perez</h3>
-                </a>
-                <a href="profile.html" class="container-profile">
-                    <img class="img-profile" src="./Img/vet3.jpg" alt="">
-                    <h3 class="h3-navBar">Victoria Lopez</h3>
-                </a>
-                <a href="profile.html" class="container-profile">
-                    <img class="img-profile" src="./Img/vet2.jpg" alt="">
-                    <h3 class="h3-navBar">Mario Martinez</h3>
-                </a>
-                <a href="profile.html" class="container-profile">
-                    <img class="img-profile" src="./Img/vet5.jpg" alt="">
-                    <h3 class="h3-navBar">Mariana Mujica</h3>
-                </a>
-            </div>
-        </aside>
-        <main>
-            <div class="container-stories">
-                <h3 style="font-size: 28px; margin-left: 40px;">Stories:</h3>
-                <div class="subcontainer-stories">
-                    <div class="img-stories" style="text-align: center; border-color: #195F6B;" >
-                        <h2>+</h2>
-                        <h3 style="font-weight: bold;">Add</h3>
-                    </div>
-                    <img class="img-stories" src="./Img/vet2.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet3.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet4.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet5.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet6.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet7.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet2.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet3.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet4.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet5.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet6.jpg" alt="">
-                    <img class="img-stories" src="./Img/vet7.jpg" alt="">
-                </div>
-            </div>
-
-            <div class="container-writePost">
-                <div class="container-writePostTop">
-                    <a href="profile.html"><img class="img-profile" src="./Img/vet1.jpg" alt=""></a>
-                    <input class="input-writePost" type="text" placeholder="Write something here..." name="" id="">
-                </div>
-                <div class="container-writePostBottom">
-                    <img class="img-writePost" src="./Img/icon-image.png" alt="">
-                    <img class="img-writePost" src="./Img/icon-video.png" alt="">
-                    <img class="img-writePost" src="./Img/icon-link.png" alt="">
-                    <img class="img-writePost" src="./Img/icon-emoji.png" alt="">
-                    <button class="button-writePost">Publish your post</button>
-                </div>
-            </div>
-
-            <div class="container-writePost">
-                <div class="container-postProfile">
-                    <a href="profile.html" class="a-postProfile">
-                        <img class="img-profile" src="./Img/vet4.jpg" alt="">
-                        <h3 class="h3-navBar">Josefa Perez</h3>
-                    </a>
-                </div>
-                <div class="container-postText">
-                    <h3 class="h3-post">Lorem ipsum dolor sit amet consectetur adipisicing elit. In adipisci excepturi soluta quos ullam ut ab velit temporibus, ratione id expedita necessitatibus totam modi nesciunt, repellat veritatis reprehenderit cupiditate aut.</h3>
-                </div>
-                <div class="container-postActions">
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
-                        <h4>13</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
-                        <h4>10</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
-                        <h3>Comment</h3>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
-                        <h3>Share</h3>
-                    </div>
-                </div>
-                <div class="container-postAllComments">
-                    <button class="button-allComments">See all 9 comments</button>
-                </div>
-            </div>
-
-            <div class="container-writePost">
-                <div class="container-postProfile">
-                    <a href="profile.html" class="a-postProfile">
-                        <img class="img-profile" src="./Img/vet4.jpg" alt="">
-                        <h3 class="h3-navBar">Josefa Perez</h3>
-                    </a>
-                </div>
-                <div class="container-postText">
-                    <h3 class="h3-post">Lorem ipsum dolor sit amet consectetur adipisicing elit. In adipisci excepturi soluta quos ullam ut ab velit temporibus, ratione id expedita necessitatibus totam modi nesciunt, repellat veritatis reprehenderit cupiditate aut.</h3>
-                </div>
-                <div class="container-postImg">
-                    <img class="img-postImg" src="./Img/post1.jpg" alt="">
-                </div>
-                <div class="container-postActions">
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
-                        <h4>13</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
-                        <h4>10</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
-                        <h3>Comment</h3>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
-                        <h3>Share</h3>
-                    </div>
-                </div>
-                <div class="container-postAllComments">
-                    <button class="button-allComments">See all 32 comments</button>
-                </div>
-            </div>
-            
-            <div class="container-writePost">
-                <div class="container-postProfile">
-                    <a href="profile.html" class="a-postProfile">
-                        <img class="img-profile" src="./Img/vet4.jpg" alt="">
-                        <h3 class="h3-navBar">Josefa Perez</h3>
-                    </a>
-                </div>
-                <div class="container-postText">
-                    <h3 class="h3-post">Lorem ipsum dolor sit amet consectetur adipisicing elit. In adipisci excepturi soluta quos ullam ut ab velit temporibus, ratione id expedita necessitatibus totam modi nesciunt, repellat veritatis reprehenderit cupiditate aut.</h3>
-                </div>
-                <div class="container-postImg">
-                    <img class="img-postImg" src="./Img/post1.jpg" alt="">
-                </div>
-                <div class="container-postActions">
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
-                        <h4>13</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
-                        <h4>10</h4>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
-                        <h3>Comment</h3>
-                    </div>
-                    <div class="button-postAction">
-                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
-                        <h3>Share</h3>
-                    </div>
-                </div>
-                <div class="container-postAllComments">
-                    <button class="button-allComments">See all 27 comments</button>
-                </div>
-            </div>
-            
-        </main>
-        <aside class="aside-right">
-            <img class="img-publicity" src="./Img/publicity1.png" alt="">
-            <img class="img-publicity" src="./Img/publicity2.png" alt="">
-            <img class="img-publicity" src="./Img/publicity3.png" alt="">
-        </aside>
+    <section id="container-loadingRing">
+        <div class="loadingRing"></div>
+        <h2 class="h2-loading">Loading...</h2>
     </section>
+    <section>
+        <div class="container-parallax">
+            <ul id="scene">
+                <li class="layer-parallax" data-depth="0.3">
+                    <img id="img-parallax"  src="./Img/vetBackground1.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div data-depth="0.8">
+            <img class="img-logoLogin" src="./Img/logo-login.png" alt="">
+        </div>
+        <form class="form-login" action="">
+            <input class="input-login" type="text" placeholder="Username">
+            <input class="input-login" type="text" placeholder="Password">
+            <a href="login_error.html" class="button-login">Log In</a>
+            <div><h5 class="h5-forgotPassword" href="">Forgot your password?</h5></div>
+            <div class="line-login"></div>
+            <a href="register.html" class="button-signUp">Sign Up</a>
+        </form>
+    </section>
+    <script type="text/javascript">
+        let scene = document.getElementById('scene')
+        let parallax = new Parallax(scene) 
+    </script>
 </body>
+<script src="./Js/javascript.js"></script>
 </html>

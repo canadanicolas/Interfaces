@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Style/style.css">
+</head>
+<body>
+    <section id="container-loadingRing">
+        <div class="loadingRing"></div>
+        <h2 class="h2-loading">Loading...</h2>
+    </section>
+    <header>
+        <div class="container-logo">
+            <a href="./home.html"><img class="img-logo" src="./Img/logo.png" alt=""></a>
+        </div>
+        <div class="container-searchBar">
+            <input class="input-searchBar" id="input-searchBar" placeholder="🍳 Search in Companion" type="text">
+        </div>
+        <div class="container-profileHeader">
+            <a href="profile.html"><img class="img-profile" src="./Img/vet1.jpg" alt=""></a>
+            <a href="profile.html"><h3 class="h3-navBar">Nicolas Cañada</h3></a>
+            <a href="index.html"><img class="img-logoutProfile" src="./Img/icon-logout.png" alt=""></a>
+        </div>
+    </header>
+    <section>
+        <aside class="aside-searchLeft">
+            <div class="container-searchFilters">
+                <h4 class="h4-searchFilters">Filter by:</h4>
+                <a href="searchByPeople.html"><button class="button-searchFilters">All</button></a>
+                <a href="searchByPeople.html"><button class="button-searchFilters">People</button></a>
+                <a href="searchByPeople.html"><button class="button-searchFilters">Posts</button></a>
+                <a href="searchByPeople.html"><button class="button-searchFilters">Articles</button></a>
+                <a href="searchByPeople.html"><button class="button-searchFilters">Photos</button></a>
+                <a href="searchByPeople.html"><button class="button-searchFilters" style="margin-bottom: 40px;">Videos</button></a>
+            </div>
+        </aside>
+        <main>
+            <div class="container-writePost" style="border-radius: 20px; margin-top: 0px;">
+                <div class="container-searchResult">
+                    <a href="profile.html" class="a-postProfile">
+                        <img class="img-profile" src="./Img/vet1.jpg" alt="">
+                    </a>
+                    <div style="width: 977px;">
+                        <a href="profile.html"><h3 class="h3-navBar">Nicolas Cañada</h3></a>
+                        <h5 class="h5-searchResult">Works in <b class="b-aboutYou">Ferreya Animal Hospital</b></h5>
+                        <h5 class="h5-searchResult">Lives in <b class="b-aboutYou">Necochea, Buenos Aires, Argentina</b></h5>
+                        <h5 class="h5-searchResult">Finished studies in  <b class="b-aboutYou">UNICEN</b></h5>
+                        <h5 class="h5-searchResult">Born in 29/03/1996</h5>
+                        <h5 class="h5-searchResult">Doctor of Veterinary Medicine</h5>
+                    </div>
+                    <img class="img-iconAddConnection" src="./Img/icon-addConnection.png" alt="">
+                </div>
+            </div>
+
+            <div class="container-writePost">
+                <div class="container-postProfile">
+                    <a href="profile.html" class="a-postProfile">
+                        <img class="img-profile" src="./Img/vet1.jpg" alt="">
+                        <h3 class="h3-navBar">Nicolas Cañada</h3>
+                    </a>
+                </div>
+                <div class="container-postText">
+                    <h3 class="h3-post">Here are some photos of the veterinary meeting that took place yesterday at the Ferreyra animal hospital</h3>
+                </div>
+                <figure class="slideshow-container">
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                      <div class="numbertext">1 / 3</div>
+                      <img src="./Img/vetBackground1.jpg" style="width:100%">
+                    </div>
+                  
+                    <div class="mySlides fade">
+                      <div class="numbertext">2 / 3</div>
+                      <img src="./Img/vetBackground2.jpg" style="width:100%">
+                    </div>
+                  
+                    <div class="mySlides fade">
+                      <div class="numbertext">3 / 3</div>
+                      <img src="./Img/vetBackground3.png" style="width:100%">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </figure>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                  </div>
+                <div class="container-postActions">
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
+                        <h4>13</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
+                        <h4>10</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
+                        <h3>Comment</h3>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
+                        <h3>Share</h3>
+                    </div>
+                </div>
+                <div class="container-postAllComments">
+                    <button class="button-allComments">See all 27 comments</button>
+                </div>
+            </div>
+
+            <div class="container-writePost">
+                <div class="container-postProfile">
+                    <a href="profile.html" class="a-postProfile">
+                        <img class="img-profile" src="./Img/vet1.jpg" alt="">
+                        <h3 class="h3-navBar">Nicolas Cañada</h3>
+                    </a>
+                </div>
+                <div class="container-postText">
+                    <h3 class="h3-post">Today I did my first surgery on a fish, it was very interesting to be honest. Very surprised that the Appendectomy works on them.
+                    </h3>
+                </div>
+                <div class="container-postActions">
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
+                        <h4>18</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
+                        <h4>29</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
+                        <h3>Comment</h3>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
+                        <h3>Share</h3>
+                    </div>
+                </div>
+                <div class="container-postAllComments">
+                    <button class="button-allComments">See all 9 comments</button>
+                </div>
+            </div>
+
+            <div class="container-writePost">
+                <div class="container-postProfile">
+                    <a href="profile.html" class="a-postProfile">
+                        <img class="img-profile" src="./Img/vet1.jpg" alt="">
+                        <h3 class="h3-navBar">Nicolas Cañada</h3>
+                    </a>
+                </div>
+                <div class="container-postText">
+                    <h3 class="h3-post">My apprentice is already starting to work with live animals, I am very proud.</h3>
+                </div>
+                <div class="container-postImg">
+                    <img class="img-postImg" src="./Img/post1.jpg" alt="">
+                </div>
+                <div class="container-postActions">
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-like.png" alt="">
+                        <h4>33</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-paw.png" alt="">
+                        <h4>15</h4>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-comment.png" alt="">
+                        <h3>Comment</h3>
+                    </div>
+                    <div class="button-postAction">
+                        <img class="img-postReactions" src="./Img/icon-share.png" alt="">
+                        <h3>Share</h3>
+                    </div>
+                </div>
+                <div class="container-postAllComments">
+                    <button class="button-allComments">See all 32 comments</button>
+                </div>
+            </div>
+
+
+            
+        </main>
+        <aside class="aside-right">
+            <img class="img-publicity" src="./Img/publicity1.png" alt="">
+            <img class="img-publicity" src="./Img/publicity4.jpg" alt="">
+            <img class="img-publicity" src="./Img/publicity3.png" alt="">
+        </aside>
+    </section>
+</body>
+<script src="./Js/javascript.js"></script>
+</html>
